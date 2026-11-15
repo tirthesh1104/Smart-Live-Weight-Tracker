@@ -1,0 +1,378 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --surface-secondary: #f1f5f9;
+  --card-background: #ffffff;
+  --card-foreground: #0f172a;
+  --text-primary: #002244;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border: #cbd5e1;
+  --border-subtle: #e2e8f0;
+  --input-background: #ffffff;
+  --input-foreground: #0f172a;
+  --muted: #64748b;
+  --primary: #003366;
+  --primary-hover: #002244;
+  --primary-light: #e0f2fe;
+  --success: #15803d;
+  --success-bg: #f0fdf4;
+  --warning: #b45309;
+  --warning-bg: #fffbeb;
+  --danger: #b91c1c;
+  --danger-bg: #fef2f2;
+  --info: #0284c7;
+  --info-bg: #f0f9ff;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --font-ui: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-num: 'Roboto', 'Inter', -apple-system, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+
+.dark {
+  --background: #090e17;
+  --foreground: #f1f5f9;
+  --surface: #131d2e;
+  --surface-secondary: #1a273e;
+  --card-background: #131d2e;
+  --card-foreground: #f8fafc;
+  --text-primary: #93c5fd;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: #334155;
+  --border-subtle: #1e293b;
+  --input-background: #0f172a;
+  --input-foreground: #f8fafc;
+  --muted: #94a3b8;
+  --primary: #1e3e62;
+  --primary-hover: #2563eb;
+  --primary-light: #1e293b;
+  --success: #22c55e;
+  --success-bg: #052e16;
+  --warning: #f59e0b;
+  --warning-bg: #451a03;
+  --danger: #ef4444;
+  --danger-bg: #450a0a;
+  --info: #38bdf8;
+  --info-bg: #082f49;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    font-size: 14px;
+  }
+  
+  html.font-size-sm {
+    font-size: 13px;
+  }
+
+  html.font-size-lg {
+    font-size: 16px;
+  }
+
+  body {
+    @apply antialiased min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-[#003366] selection:text-white;
+    overflow-x: hidden;
+    font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'cv02' 1, 'cv03' 1, 'cv04' 1, 'cv11' 1, 'tnum' 1;
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.022em;
+    font-feature-settings: 'cv02' 1, 'cv03' 1, 'cv04' 1, 'cv11' 1;
+  }
+
+  /* Unified Typography Scale */
+  .typo-display {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-50 leading-tight;
+  }
+
+  .typo-h1 {
+    @apply text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 leading-snug;
+  }
+
+  .typo-h2 {
+    @apply text-xl md:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 leading-snug;
+  }
+
+  .typo-h3 {
+    @apply text-lg md:text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 leading-snug;
+  }
+
+  .typo-h4 {
+    @apply text-base md:text-lg font-semibold text-slate-800 dark:text-slate-200 leading-normal;
+  }
+
+  .typo-body-lg {
+    @apply text-base text-slate-700 dark:text-slate-300 leading-relaxed;
+  }
+
+  .typo-body {
+    @apply text-sm text-slate-700 dark:text-slate-300 leading-normal;
+  }
+
+  .typo-body-sm {
+    @apply text-xs text-slate-600 dark:text-slate-400 leading-normal;
+  }
+
+  .typo-caption {
+    @apply text-[11px] text-slate-500 dark:text-slate-400 leading-normal font-medium;
+  }
+
+  .typo-label {
+    @apply text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider;
+  }
+
+  /* Dedicated Tabular Numeric Display for Railway Telemetry */
+  .font-tabular, .tabular-nums, .metric-value, [data-metric="true"], .telemetry-metric {
+    font-family: 'Roboto', 'Inter', -apple-system, sans-serif;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: 'tnum' 1, 'lnum' 1, 'cv02' 1, 'cv03' 1;
+    letter-spacing: -0.015em;
+  }
+
+  .metric-stat-lg {
+    @apply font-tabular text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 tracking-tight;
+  }
+
+  .metric-stat-md {
+    @apply font-tabular text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight;
+  }
+
+  .metric-stat-sm {
+    @apply font-tabular text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-100;
+  }
+
+  .metric-unit {
+    @apply text-xs md:text-sm font-medium text-slate-500 dark:text-slate-400 ml-1 inline-block;
+  }
+
+  /* Enhanced Marathi Unicode script rendering */
+  [lang="mr"], .lang-mr {
+    font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #0284c7;
+    outline-offset: 2px;
+  }
+
+  /* High contrast mode per public service accessibility guidelines */
+  html.high-contrast body {
+    @apply bg-black text-white;
+  }
+  html.high-contrast a {
+    @apply text-yellow-300 underline;
+  }
+}
+
+@layer components {
+  /* Modern Enterprise Cards */
+  .card-modern {
+    @apply bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md transition-shadow;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px -1px rgba(0, 0, 0, 0.07);
+  }
+  .card-modern:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-modern-header {
+    @apply px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between;
+  }
+
+  /* Modern Enterprise Tables */
+  .table-modern {
+    @apply w-full text-xs text-left border-collapse border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900;
+  }
+  .table-modern th {
+    @apply bg-slate-50 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 font-bold px-3 py-2.5 border-b border-slate-200 dark:border-slate-700 uppercase tracking-wider text-[11px];
+  }
+  .table-modern td {
+    @apply px-3 py-2.5 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-tabular;
+  }
+  .table-modern tr:hover td {
+    @apply bg-slate-50/80 dark:bg-slate-800/50;
+  }
+
+  /* Modern Action Buttons */
+  .btn-modern-primary {
+    @apply inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-sm bg-[#003366] hover:bg-[#002244] text-white font-medium text-xs shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-modern-secondary {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-sm bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium text-xs border border-slate-300 dark:border-slate-700 transition-all focus:outline-none disabled:opacity-50;
+  }
+
+  .btn-modern-danger {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-sm bg-red-600 hover:bg-red-700 text-white font-medium text-xs shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50;
+  }
+
+  /* Modern Form Controls */
+  .input-modern {
+    @apply w-full px-3 py-2 text-xs rounded-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#003366] dark:focus:border-blue-400 focus:ring-1 focus:ring-[#003366] dark:focus:ring-blue-400 transition-colors;
+  }
+}
+
+/* Professional Government Portal Table Styling */
+.gov-table {
+  @apply w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900;
+}
+.gov-table th {
+  @apply bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold px-3 py-2.5 border border-slate-300 dark:border-slate-700 uppercase tracking-wider text-[11px];
+}
+.gov-table td {
+  @apply px-3 py-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300;
+}
+.gov-table tr:hover td {
+  @apply bg-slate-50 dark:bg-slate-800/60;
+}
+
+/* Standard Government Portal Card */
+.gov-card {
+  @apply bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-none shadow-sm;
+}
+
+/* Standard Government Input Controls */
+.gov-input, .gov-select {
+  @apply w-full px-3 py-2 text-xs rounded-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#003366] dark:focus:border-blue-400;
+}
+
+/* Clean accessible scrollbar */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark .scrollbar-thin::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+}
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+/* ====================================================================
+   GLOBAL TEXT CONTRAST & ACCESSIBILITY ENHANCEMENTS (WCAG AA/AAA)
+   ==================================================================== */
+
+/* Dark Mode Global Text Contrast & Brand Color Inversion */
+.dark {
+  color-scheme: dark;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #f8fafc;
+}
+
+/* Force dark brand colors to bright high-contrast colors in dark mode */
+.dark .text-\[\#002244\] {
+  color: #f8fafc !important;
+}
+
+.dark .text-\[\#003366\] {
+  color: #93c5fd !important;
+}
+
+.dark .text-\[\#001833\] {
+  color: #f8fafc !important;
+}
+
+/* Global text color fallbacks on dark surfaces */
+.dark .text-slate-900,
+.dark .text-slate-800 {
+  color: #f8fafc;
+}
+
+.dark .text-slate-700,
+.dark .text-slate-600 {
+  color: #cbd5e1;
+}
+
+.dark .text-slate-500 {
+  color: #94a3b8;
+}
+
+/* Buttons and Links on Dark Mode */
+.dark a.bg-white,
+.dark button.bg-white {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+.dark a.bg-white:hover,
+.dark button.bg-white:hover {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+/* Cards on Dark Mode */
+.dark .gov-card {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark .gov-card h1,
+.dark .gov-card h2,
+.dark .gov-card h3,
+.dark .gov-card h4 {
+  color: #f8fafc;
+}
+
+.dark .gov-card p {
+  color: #cbd5e1;
+}
+
+/* Tables on Dark Mode */
+.dark .gov-table {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+.dark .gov-table th {
+  background-color: #1e293b;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+.dark .gov-table td {
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+.dark .gov-table tr:hover td {
+  background-color: #1e293b;
+}
+
+/* Inputs and Forms on Dark Mode */
+.dark input, 
+.dark select, 
+.dark textarea {
+  color: #f8fafc;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #94a3b8;
+}

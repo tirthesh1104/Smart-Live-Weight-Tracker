@@ -1,0 +1,155 @@
+export const en = {
+  appName: "Smart Live Weight Tracker",
+  appSubtitle: "Railway Passenger Coach Monitoring & Crowd Management System",
+  legalDisclaimer: "Independent software prototype. Real railway operational data is not currently connected.",
+  disclaimer: "Important Notice: Coach occupancy is an estimated weight-based indicator calculated from bogie suspension load cells, not an exact optical passenger headcount.",
+  simulatedTag: "SIMULATED DATA",
+  manualTag: "MANUAL ENTRY",
+  realTag: "REAL DATA",
+
+  nav: {
+    home: "Home",
+    passenger: "Passenger Services",
+    monitoring: "Train Monitoring",
+    dashboard: "Master Dashboard",
+    stationDisplay: "Station Display",
+    simulator: "Sensor Simulator",
+    staff: "Operations Desk",
+    reports: "Reports",
+    admin: "Administration",
+    feedback: "Feedback & Support",
+    profile: "User Profile",
+    settings: "Settings",
+    help: "Help & Guidelines",
+    login: "Sign In",
+    register: "Register",
+    logout: "Sign Out"
+  },
+
+  landing: {
+    badge: "Public Service Prototype Portal",
+    title: "Passenger Coach Crowd Monitoring & Load Intelligence",
+    desc: "A systematic operational portal designed to estimate railway coach passenger occupancy using bogie suspension load measurements, aiding commuter distribution and preventing carriage structural overload.",
+    servicesTitle: "Public & Operational Services",
+    passengerServiceTitle: "Passenger Coach Enquiry",
+    passengerServiceDesc: "Check coach composition, occupancy ratios, and space availability before boarding.",
+    monitoringServiceTitle: "Train Fleet Monitoring",
+    monitoringServiceDesc: "Track gross vehicle weights, tare calibration, and payload headroom for registered rakes.",
+    displayServiceTitle: "Station Platform Information",
+    displayServiceDesc: "High-contrast platform display board for passenger waiting areas.",
+    simulatorServiceTitle: "Software Bogie Simulator",
+    simulatorServiceDesc: "Create manual simulation scenarios to evaluate load calculations without physical sensors.",
+    systemNoticeTitle: "Operational Data Status",
+    systemNoticeDesc: "Real-time physical railway sensor integration is currently pending official CRIS/IR data stream authorization. Sensor simulator tools operate in isolated test sessions.",
+    howItWorksTitle: "System Architectural Overview",
+    step1Title: "1. Bogie Load Sensors",
+    step1Desc: "Piezoelectric or strain gauge transducers mounted on bogie secondary suspension detect gross carriage weight.",
+    step2Title: "2. Payload Ratio Calculation",
+    step2Desc: "Calculates net passenger payload using tare empty weight and rated capacity limits.",
+    step3Title: "3. Service Portal Broadcast",
+    step3Desc: "Transmits verified occupancy ratings to platform display boards and commuter web portals.",
+    step4Title: "4. Overload Guardrails",
+    step4Desc: "Flags severe weight spikes exceeding rated capacity to operational staff."
+  },
+
+  passenger: {
+    title: "Passenger Coach Crowd Enquiry",
+    subtitle: "Check train coach composition and estimated occupancy levels.",
+    searchPlaceholder: "Search train by number or name...",
+    selectRoute: "Select Journey Route",
+    allStations: "All Stations",
+    autoRefresh: "Auto-refreshing (3s)",
+    refreshNow: "Refresh",
+    lastUpdated: "Last updated",
+    trainRoute: "Route",
+    locomotive: "LOCO ENGINE",
+    leastCrowdedRecommendation: "Space Recommendation",
+    recommendationReason: "Basis for recommendation",
+    clickForDetails: "Select a coach to inspect gross weight, tare weight, and payload headroom.",
+    emptyTitle: "No Train Records Available",
+    emptyDesc: "No train records are currently registered in the database. Please add a train via Administration or configure an authorized railway data source.",
+    emptyOccupancyTitle: "Live Occupancy Data Pending",
+    emptyOccupancyDesc: "Real railway sensor integration is pending authorization. No verified physical sensor readings have been received.",
+    noRecommendation: "Coach space recommendations are unavailable because verified real-time weight telemetry has not been received.",
+    statusAvailable: "0–40% Space Available",
+    statusModerate: "41–75% Moderately Crowded",
+    statusFull: "76–100% Full / Heavy",
+    statusOverloaded: ">100% Overloaded Warning"
+  },
+
+  display: {
+    boardTitle: "PASSENGER INFORMATION DISPLAY SYSTEM",
+    subtitle: "PLATFORM LEVEL COACH OCCUPANCY INDICATOR",
+    trainDetails: "TRAIN DETAILS",
+    departure: "Platform 3 • Scheduled Departure",
+    coachLayoutTitle: "COACH POSITION & OCCUPANCY RATIO",
+    recommendedBanner: "BOARDING RECOMMENDATION: Coach",
+    isOptimal: "has lowest density and available seating space.",
+    noTrainSelected: "No live train selected or registered for platform display.",
+    dataPendingNotice: "Verified live railway data stream pending authorization."
+  },
+
+  simulator: {
+    title: "Sensor Simulator (Testing Environment)",
+    subtitle: "Evaluate coach load calculations and overload alerts using isolated simulation sessions. Simulated data is strictly separated from operational records.",
+    scenarioTitle: "Simulation Scenario Management",
+    createScenario: "Create Simulation Scenario",
+    clearScenario: "Delete Simulation Session",
+    noScenarioTitle: "No Active Simulation Scenario",
+    noScenarioDesc: "Create a temporary simulation session to configure train coaches and adjust weights manually.",
+    actionsTitle: "Load Simulation Controls",
+    randomCrowd: "Random Crowd Distribution",
+    rushHour: "Simulate Rush Hour Overload",
+    emptyTrain: "Reset to Empty Tare Weight",
+    autoSimulate: "Auto-Simulate Commuter Ingress/Egress",
+    autoSimulateActive: "Auto-Simulating Boarding/Alighting (3s cycle)...",
+    weightAdjustment: "Individual Coach Gross Weight (kg)"
+  },
+
+  admin: {
+    title: "Administration Console",
+    subtitle: "Train fleet configuration, coach calibration, audit trails, and data source management.",
+    totalTrains: "Registered Trains",
+    totalCoaches: "Registered Coaches",
+    avgOccupancy: "Avg Fleet Occupancy",
+    overloadedCoaches: "Overloaded Coaches",
+    activeSensors: "Sensor Status",
+    aiAssistantTitle: "AI Analytics Assistant (Record-Based)",
+    aiAssistantPlaceholder: "Inquire about registered trains, weight records, or safety alerts...",
+    chartsTitle: "Telemetry Analytics",
+    trainManagement: "Train Fleet Records",
+    addTrain: "Register New Train",
+    coachManagement: "Coach Configuration",
+    systemAlerts: "Operational Safety Alerts",
+    noRecords: "No records found in database.",
+    emptyTrains: "No trains have been registered. Click 'Register New Train' to create your first operational rake."
+  },
+
+  staff: {
+    title: "Operations & Safety Desk",
+    subtitle: "Live bogie telemetry monitoring, overload alert handling, and incident reporting.",
+    assignedTrain: "Assigned Train Rake",
+    liveMonitoring: "Bogie Load Monitoring Table",
+    reportIncident: "Log Safety Incident",
+    incidentTitle: "Incident Summary",
+    incidentDesc: "Detailed Observation / Mitigation Action",
+    submitReport: "Submit Incident Report",
+    recentReports: "Official Incident Records",
+    noAssignedTrains: "No operational trains currently assigned. Register a train in the admin module.",
+    noIncidents: "No safety incidents recorded."
+  },
+
+  reports: {
+    title: "System Reports & Audit Records",
+    subtitle: "Historical load logs, occupancy ratios, incident archives, and audit records.",
+    emptyReport: "No operational records available for the selected filter.",
+    trainReport: "Train-Wise Fleet Report",
+    incidentReport: "Safety Incident Report",
+    readingHistory: "Telemetry Packet History"
+  },
+
+  help: {
+    title: "Help, Guidelines & User Documentation",
+    subtitle: "System operation manual, data source definitions, accessibility statement, and legal notice."
+  }
+};

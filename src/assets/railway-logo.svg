@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Outer Circular Precision Rim -->
+  <circle cx="60" cy="60" r="56" stroke="#003366" stroke-width="4" fill="#002244"/>
+  <circle cx="60" cy="60" r="50" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6 3"/>
+  
+  <!-- Railway Track Ballast & Sleepers Base -->
+  <path d="M28 88 L92 88" stroke="#94A3B8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M34 88 L30 98 M48 88 L46 98 M60 88 L60 98 M72 88 L74 98 M86 88 L90 98" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M24 98 L96 98" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Modern Indian Locomotive (WAP-7 / Vande Bharat Aerodynamic Silhouette) -->
+  <path d="M36 78 L36 46 Q36 32 60 30 Q84 32 84 46 L84 78 Z" fill="#1E3E62" stroke="#FFFFFF" stroke-width="2.5"/>
+  <path d="M42 34 L78 34" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Aerodynamic Windshield -->
+  <path d="M42 42 Q60 38 78 42 L76 54 Q60 52 44 54 Z" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5"/>
+  <line x1="60" y1="40" x2="60" y2="53" stroke="#FFFFFF" stroke-width="1"/>
+
+  <!-- High-Intensity Twin Headlamps -->
+  <circle cx="46" cy="62" r="3.5" fill="#FDE047" stroke="#FFFFFF" stroke-width="1"/>
+  <circle cx="74" cy="62" r="3.5" fill="#FDE047" stroke="#FFFFFF" stroke-width="1"/>
+  <line x1="53" y1="62" x2="67" y2="62" stroke="#FFFFFF" stroke-width="2"/>
+
+  <!-- Bogie Strain Wave Telemetry Indicators (Smart Weight Tracker) -->
+  <path d="M42 70 Q60 65 78 70" stroke="#10B981" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M46 75 Q60 71 74 75" stroke="#10B981" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Cowcatcher / Rail Pilot Guard -->
+  <path d="M38 78 L32 86 L88 86 L82 78 Z" fill="#002244" stroke="#F59E0B" stroke-width="1.5"/>
+
+  <!-- Digital Telemetry Signal Pulse Node -->
+  <circle cx="60" cy="22" r="3" fill="#10B981"/>
+  <path d="M52 20 Q60 14 68 20" stroke="#10B981" stroke-width="1.5" fill="none"/>
+  <path d="M48 16 Q60 8 72 16" stroke="#10B981" stroke-width="1.5" fill="none" opacity="0.6"/>
+</svg>

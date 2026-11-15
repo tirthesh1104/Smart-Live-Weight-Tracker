@@ -1,0 +1,39 @@
+{
+  "name": "smart-live-weight-tracker",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "db:validate": "node scripts/validate_postgres_runtime.mjs",
+    "db:verify": "node scripts/verify_phase4_live.mjs",
+    "db:deploy": "node scripts/deploy_migration_direct.mjs",
+    "supabase:login": "npx supabase login",
+    "supabase:link": "npx supabase link --project-ref wvtsqnyzgpbprywesolb",
+    "supabase:push": "npx supabase db push --remote=wvtsqnyzgpbprywesolb"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.48.1",
+    "lucide-react": "^0.475.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.5",
+    "recharts": "^2.15.1"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.16",
+    "@types/node": "^22.13.4",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "pg": "^8.23.1",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}

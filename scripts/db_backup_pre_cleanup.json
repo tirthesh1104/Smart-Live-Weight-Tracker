@@ -1,0 +1,569 @@
+{
+  "backup_timestamp": "2026-11-13T07:54:13.227Z",
+  "source_url": "https://wvtsqnyzgpbprywesolb.supabase.co",
+  "tables": {
+    "profiles": {
+      "count": 2,
+      "rows": [
+        {
+          "id": "999afad6-11ea-454b-b4fb-4dab08836de2",
+          "full_name": "Verified Commuter",
+          "email": "audit.crowd.test.1794468842312@gmail.com",
+          "role": "passenger",
+          "phone": null,
+          "department": null,
+          "employee_id": null,
+          "status": "active",
+          "created_at": "2026-11-12T07:34:01.72086+00:00"
+        },
+        {
+          "id": "86a1cfd7-5753-4154-82fb-99d9d8339a2e",
+          "full_name": "Kiran Jadhav",
+          "email": "kiranjadhav123@gmail.com",
+          "role": "passenger",
+          "phone": "8513257103",
+          "department": null,
+          "employee_id": null,
+          "status": "active",
+          "created_at": "2026-11-12T15:43:45.685683+00:00"
+        }
+      ]
+    },
+    "trains": {
+      "count": 3,
+      "rows": [
+        {
+          "id": "11111111-1111-1111-1111-111111111111",
+          "number": "12101",
+          "name": "Jnaneshwari Express",
+          "from_station": "Lokmanya Tilak Terminus (LTT)",
+          "to_station": "Howrah Junction (HWH)",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "22222222-2222-2222-2222-222222222222",
+          "number": "11020",
+          "name": "Konark Express",
+          "from_station": "Bhubaneswar (BBS)",
+          "to_station": "Mumbai CSMT (CSMT)",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "33333333-3333-3333-3333-333333333333",
+          "number": "12115",
+          "name": "Siddheshwar Express",
+          "from_station": "Mumbai CSMT (CSMT)",
+          "to_station": "Solapur Junction (SUR)",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        }
+      ]
+    },
+    "coaches": {
+      "count": 22,
+      "rows": [
+        {
+          "id": "a1111111-0000-0000-0000-000000000001",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "LOCO",
+          "coach_type": "Engine",
+          "empty_weight_kg": 123000,
+          "max_capacity_kg": 123000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000002",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "GEN-1",
+          "coach_type": "General",
+          "empty_weight_kg": 38000,
+          "max_capacity_kg": 48500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000003",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "S1",
+          "coach_type": "Sleeper",
+          "empty_weight_kg": 39500,
+          "max_capacity_kg": 47000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000004",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "S2",
+          "coach_type": "Sleeper",
+          "empty_weight_kg": 39500,
+          "max_capacity_kg": 47000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000005",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "S3",
+          "coach_type": "Sleeper",
+          "empty_weight_kg": 39500,
+          "max_capacity_kg": 47000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000006",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "B1",
+          "coach_type": "AC 3 Tier",
+          "empty_weight_kg": 44000,
+          "max_capacity_kg": 50500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000007",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "B2",
+          "coach_type": "AC 3 Tier",
+          "empty_weight_kg": 44000,
+          "max_capacity_kg": 50500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000008",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "B3",
+          "coach_type": "AC 3 Tier",
+          "empty_weight_kg": 44000,
+          "max_capacity_kg": 50500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000009",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "A1",
+          "coach_type": "AC 2 Tier",
+          "empty_weight_kg": 45000,
+          "max_capacity_kg": 50000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000010",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "PC",
+          "coach_type": "Pantry Car",
+          "empty_weight_kg": 41000,
+          "max_capacity_kg": 46000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000011",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "S4",
+          "coach_type": "Sleeper",
+          "empty_weight_kg": 39500,
+          "max_capacity_kg": 47000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "a1111111-0000-0000-0000-000000000012",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_no": "GEN-2",
+          "coach_type": "General",
+          "empty_weight_kg": 38000,
+          "max_capacity_kg": 48500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000001",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "LOCO",
+          "coach_type": "Engine",
+          "empty_weight_kg": 123000,
+          "max_capacity_kg": 123000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000002",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "GEN-1",
+          "coach_type": "General",
+          "empty_weight_kg": 38000,
+          "max_capacity_kg": 48500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000003",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "D1",
+          "coach_type": "Second Sitting",
+          "empty_weight_kg": 38500,
+          "max_capacity_kg": 47500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000004",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "S1",
+          "coach_type": "Sleeper",
+          "empty_weight_kg": 39500,
+          "max_capacity_kg": 47000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000005",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "S2",
+          "coach_type": "Sleeper",
+          "empty_weight_kg": 39500,
+          "max_capacity_kg": 47000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000006",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "B1",
+          "coach_type": "AC 3 Tier",
+          "empty_weight_kg": 44000,
+          "max_capacity_kg": 50500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000007",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "B2",
+          "coach_type": "AC 3 Tier",
+          "empty_weight_kg": 44000,
+          "max_capacity_kg": 50500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000008",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "A1",
+          "coach_type": "AC 2 Tier",
+          "empty_weight_kg": 45000,
+          "max_capacity_kg": 50000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000009",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "S3",
+          "coach_type": "Sleeper",
+          "empty_weight_kg": 39500,
+          "max_capacity_kg": 47000,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "b2222222-0000-0000-0000-000000000010",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_no": "GEN-2",
+          "coach_type": "General",
+          "empty_weight_kg": 38000,
+          "max_capacity_kg": 48500,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        }
+      ]
+    },
+    "weight_readings": {
+      "count": 11,
+      "rows": [
+        {
+          "id": "f1000000-0000-0000-0000-000000000001",
+          "coach_id": "a1111111-0000-0000-0000-000000000002",
+          "weight_kg": 47240,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000002",
+          "coach_id": "a1111111-0000-0000-0000-000000000003",
+          "weight_kg": 42125,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000003",
+          "coach_id": "a1111111-0000-0000-0000-000000000004",
+          "weight_kg": 44600,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000004",
+          "coach_id": "a1111111-0000-0000-0000-000000000005",
+          "weight_kg": 41600,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000005",
+          "coach_id": "a1111111-0000-0000-0000-000000000006",
+          "weight_kg": 47575,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000006",
+          "coach_id": "a1111111-0000-0000-0000-000000000007",
+          "weight_kg": 48550,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000007",
+          "coach_id": "a1111111-0000-0000-0000-000000000008",
+          "weight_kg": 49000,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000008",
+          "coach_id": "a1111111-0000-0000-0000-000000000009",
+          "weight_kg": 46500,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000009",
+          "coach_id": "a1111111-0000-0000-0000-000000000010",
+          "weight_kg": 42200,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000010",
+          "coach_id": "a1111111-0000-0000-0000-000000000011",
+          "weight_kg": 44100,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        },
+        {
+          "id": "f1000000-0000-0000-0000-000000000011",
+          "coach_id": "a1111111-0000-0000-0000-000000000012",
+          "weight_kg": 49200,
+          "recorded_at": "2026-11-12T07:27:56.93442+00:00",
+          "source": "piezoelectric_bogie_sensor",
+          "is_simulated": true
+        }
+      ]
+    },
+    "notifications": {
+      "count": 3,
+      "rows": [
+        {
+          "id": "f2000000-0000-0000-0000-000000000001",
+          "title": "Overload Warning Detected",
+          "message": "Coach GEN-2 on Train 12101 (Jnaneshwari Express) exceeded maximum gross weight threshold (49,200 kg / 48,500 kg max). Passenger safety alert dispatched to Dadar / Kalyan RPF.",
+          "severity": "overload",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_id": "a1111111-0000-0000-0000-000000000012",
+          "created_at": "2026-11-12T07:23:56.93442+00:00",
+          "is_read": false
+        },
+        {
+          "id": "f2000000-0000-0000-0000-000000000002",
+          "title": "Coach Capacity Alert",
+          "message": "Coach B3 on Train 12101 has reached 77% capacity. Passengers are advised to seek adjacent coaches.",
+          "severity": "warning",
+          "train_id": "11111111-1111-1111-1111-111111111111",
+          "coach_id": "a1111111-0000-0000-0000-000000000008",
+          "created_at": "2026-11-12T07:16:56.93442+00:00",
+          "is_read": false
+        },
+        {
+          "id": "f2000000-0000-0000-0000-000000000003",
+          "title": "Sensor Diagnostics Check",
+          "message": "Telemetry bogie strain gauge calibrator verified all sensors active on Train 11020.",
+          "severity": "info",
+          "train_id": "22222222-2222-2222-2222-222222222222",
+          "coach_id": null,
+          "created_at": "2026-11-12T07:03:56.93442+00:00",
+          "is_read": true
+        }
+      ]
+    },
+    "incidents": {
+      "count": 0,
+      "rows": []
+    },
+    "predictions": {
+      "count": 0,
+      "rows": []
+    },
+    "audit_logs": {
+      "count": 0,
+      "rows": []
+    },
+    "coach_layout_templates": {
+      "count": 5,
+      "rows": [
+        {
+          "id": "10000000-0000-0000-0000-000000000001",
+          "class_code": "SL",
+          "class_name": "Sleeper Class (Non-AC)",
+          "total_seats": 72,
+          "has_middle_berth": true,
+          "has_side_berth": true,
+          "is_chair_car": false,
+          "bays_count": 9,
+          "seats_per_bay": 8,
+          "description": "Standard Indian Railways Sleeper with 8 berths per bay (Lower, Middle, Upper, Side Lower, Side Upper).",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "10000000-0000-0000-0000-000000000002",
+          "class_code": "3A",
+          "class_name": "AC 3 Tier (Air Conditioned)",
+          "total_seats": 64,
+          "has_middle_berth": true,
+          "has_side_berth": true,
+          "is_chair_car": false,
+          "bays_count": 8,
+          "seats_per_bay": 8,
+          "description": "Air conditioned 3-tier sleeper coach with sealed windows and climate control.",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "10000000-0000-0000-0000-000000000003",
+          "class_code": "2A",
+          "class_name": "AC 2 Tier (Air Conditioned)",
+          "total_seats": 48,
+          "has_middle_berth": false,
+          "has_side_berth": true,
+          "is_chair_car": false,
+          "bays_count": 8,
+          "seats_per_bay": 6,
+          "description": "Spacious AC 2 Tier coach without middle berths.",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "10000000-0000-0000-0000-000000000004",
+          "class_code": "CC",
+          "class_name": "AC Chair Car",
+          "total_seats": 73,
+          "has_middle_berth": false,
+          "has_side_berth": false,
+          "is_chair_car": true,
+          "bays_count": 15,
+          "seats_per_bay": 5,
+          "description": "Executive push-back chair car with 3x2 seating arrangement.",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "10000000-0000-0000-0000-000000000005",
+          "class_code": "GS",
+          "class_name": "Second Class Unreserved (General)",
+          "total_seats": 90,
+          "has_middle_berth": false,
+          "has_side_berth": false,
+          "is_chair_car": false,
+          "bays_count": 10,
+          "seats_per_bay": 9,
+          "description": "High-capacity unreserved commuter seating.",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        }
+      ]
+    },
+    "coach_seats": {
+      "count": 0,
+      "rows": []
+    },
+    "seat_occupancy": {
+      "count": 0,
+      "rows": []
+    },
+    "passenger_submissions": {
+      "count": 0,
+      "rows": []
+    },
+    "occupancy_verifications": {
+      "count": 0,
+      "rows": []
+    },
+    "passenger_assistance_requests": {
+      "count": 0,
+      "rows": []
+    },
+    "coach_inspections": {
+      "count": 0,
+      "rows": []
+    },
+    "sensor_calibrations": {
+      "count": 2,
+      "rows": [
+        {
+          "id": "c0000000-0000-0000-0000-000000000001",
+          "sensor_code": "SNSR-BOGIE-12101-GEN1-A",
+          "coach_id": "a1111111-0000-0000-0000-000000000002",
+          "last_calibrated_at": "2026-11-02T07:28:56.93442+00:00",
+          "next_due_at": "2027-01-31T07:28:56.93442+00:00",
+          "calibration_status": "Valid",
+          "offset_kg": 0,
+          "technician_notes": "Zero tare calibration verified on Dadar test track.",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "c0000000-0000-0000-0000-000000000002",
+          "sensor_code": "SNSR-BOGIE-12101-S1-A",
+          "coach_id": "a1111111-0000-0000-0000-000000000003",
+          "last_calibrated_at": "2026-10-23T07:28:56.93442+00:00",
+          "next_due_at": "2027-01-21T07:28:56.93442+00:00",
+          "calibration_status": "Valid",
+          "offset_kg": 0,
+          "technician_notes": "Piezoelectric sensor response linear within 0.2% tolerance.",
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        }
+      ]
+    },
+    "weight_anomaly_logs": {
+      "count": 0,
+      "rows": []
+    },
+    "escalation_rules": {
+      "count": 3,
+      "rows": [
+        {
+          "id": "e0000000-0000-0000-0000-000000000001",
+          "rule_name": "Critical Structural Overload Protocol",
+          "trigger_severity": "overload",
+          "recipient_roles": [
+            "admin",
+            "staff"
+          ],
+          "timeout_minutes": 5,
+          "is_active": true,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "e0000000-0000-0000-0000-000000000002",
+          "rule_name": "Safety Incident Dispatch to RPF Desk",
+          "trigger_severity": "critical",
+          "recipient_roles": [
+            "staff"
+          ],
+          "timeout_minutes": 10,
+          "is_active": true,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        },
+        {
+          "id": "e0000000-0000-0000-0000-000000000003",
+          "rule_name": "High Crowd Threshold Warning",
+          "trigger_severity": "warning",
+          "recipient_roles": [
+            "staff"
+          ],
+          "timeout_minutes": 15,
+          "is_active": true,
+          "created_at": "2026-11-12T07:28:56.93442+00:00"
+        }
+      ]
+    }
+  }
+}

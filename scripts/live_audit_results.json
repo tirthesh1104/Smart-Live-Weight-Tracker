@@ -1,0 +1,473 @@
+{
+  "rc_search_ned": {
+    "success": true,
+    "data": {
+      "results": [
+        {
+          "station_code": "NED",
+          "station_name": "H SAHIB NANDED",
+          "display_name": "H SAHIB NANDED",
+          "city": "Nanded",
+          "state": "Maharashtra",
+          "country": "IN",
+          "latitude": 19.160522,
+          "longitude": 77.310478,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 1
+        },
+        {
+          "station_code": "NMB",
+          "station_name": "NEDUMBALAM",
+          "display_name": "NEDUMBALAM",
+          "city": "Nedumbalam",
+          "state": null,
+          "country": "IN",
+          "latitude": null,
+          "longitude": null,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.95
+        },
+        {
+          "station_code": "NMO",
+          "station_name": "NEDIMOLYANUR",
+          "display_name": "NEDIMOLYANUR",
+          "city": "Nedimolyanur",
+          "state": "Tamil Nadu",
+          "country": "IN",
+          "latitude": 12.128075,
+          "longitude": 79.56707,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.95
+        }
+      ],
+      "query": "NED",
+      "limit": 10,
+      "enriched": false
+    },
+    "meta": {
+      "api_version": "v1",
+      "request_id": "req_01M7BZJAS3CY9AAFK0R31NXTYW",
+      "trace_id": "trc_01M7BZJAS3MC8E6XQYM10QEWZ3",
+      "timestamp": "2026-11-14T08:23:13.473+05:30",
+      "freshness": {
+        "mode": "live",
+        "retrieved_at": "2026-11-14T02:53:13.473Z"
+      }
+    }
+  },
+  "rc_search_nanded": {
+    "success": true,
+    "data": {
+      "results": [
+        {
+          "station_code": "NED",
+          "station_name": "H SAHIB NANDED",
+          "display_name": "H SAHIB NANDED",
+          "city": "Nanded",
+          "state": "Maharashtra",
+          "country": "IN",
+          "latitude": 19.160522,
+          "longitude": 77.310478,
+          "aliases": [
+            "Hazur Sahib Nanded"
+          ],
+          "is_major": false,
+          "confidence": 1
+        },
+        {
+          "station_code": "NDR",
+          "station_name": "NANDESARI",
+          "display_name": "NANDESARI",
+          "city": "Nandesari",
+          "state": "Gujarat",
+          "country": "IN",
+          "latitude": 22.418331637,
+          "longitude": 73.095273428,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.6583333333333334
+        },
+        {
+          "station_code": "NDB",
+          "station_name": "NANDURBAR",
+          "display_name": "NANDURBAR",
+          "city": "Nandurbar",
+          "state": "Maharashtra",
+          "country": "IN",
+          "latitude": 21.374812,
+          "longitude": 74.246482,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.6366666666666667
+        },
+        {
+          "station_code": "NN",
+          "station_name": "NANDURA",
+          "display_name": "NANDURA",
+          "city": "Nandura",
+          "state": "Maharashtra",
+          "country": "IN",
+          "latitude": 20.838611111,
+          "longitude": 76.460222222,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.6366666666666667
+        },
+        {
+          "station_code": "NDL",
+          "station_name": "NANDYAL JN",
+          "display_name": "NANDYAL JN",
+          "city": "Nandyal",
+          "state": "Andhra Pradesh",
+          "country": "IN",
+          "latitude": 15.468024,
+          "longitude": 78.472545,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.6366666666666667
+        },
+        {
+          "station_code": "NGN",
+          "station_name": "NANDGAON",
+          "display_name": "NANDGAON",
+          "city": "Nandgaon",
+          "state": "Maharashtra",
+          "country": "IN",
+          "latitude": 20.3092535,
+          "longitude": 74.66040373,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.6366666666666667
+        },
+        {
+          "station_code": "NRE",
+          "station_name": "NANDALUR",
+          "display_name": "NANDALUR",
+          "city": "YSR  Kadapa",
+          "state": "Andhra Pradesh",
+          "country": "IN",
+          "latitude": 14.264922,
+          "longitude": 79.105722,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.6366666666666667
+        },
+        {
+          "station_code": "NDJ",
+          "station_name": "NANDGANJ",
+          "display_name": "NANDGANJ",
+          "city": "Nandganj",
+          "state": "Uttar Pradesh",
+          "country": "IN",
+          "latitude": 25.54457,
+          "longitude": 83.396867,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.6366666666666667
+        },
+        {
+          "station_code": "NHM",
+          "station_name": "NANDOL DAHEGAM",
+          "display_name": "NANDOL DAHEGAM",
+          "city": "Nandol Dahegam",
+          "state": "Gujarat",
+          "country": "IN",
+          "latitude": 23.17417,
+          "longitude": 72.815845,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.6366666666666667
+        },
+        {
+          "station_code": "NDLH",
+          "station_name": "NANDLALEE HALT",
+          "display_name": "NANDLALEE HALT",
+          "city": null,
+          "state": "Bihar",
+          "country": "IN",
+          "latitude": 25.928813,
+          "longitude": 86.593645,
+          "aliases": [],
+          "is_major": false,
+          "confidence": 0.6366666666666667
+        }
+      ],
+      "query": "Nanded",
+      "limit": 10,
+      "enriched": false
+    },
+    "meta": {
+      "api_version": "v1",
+      "request_id": "req_01M7BZJAZJ8K69ZRPVSDF9D5AD",
+      "trace_id": "trc_01M7BZJAZJKQ8BCPM2BFPC5T0Y",
+      "timestamp": "2026-11-14T08:23:13.671+05:30",
+      "freshness": {
+        "mode": "live",
+        "retrieved_at": "2026-11-14T02:53:13.671Z"
+      }
+    }
+  },
+  "rc_station_ned": {
+    "success": true,
+    "data": {
+      "station_code": "NED",
+      "station_name": "H SAHIB NANDED",
+      "display_name": "H SAHIB NANDED",
+      "city": "Nanded",
+      "state": "Maharashtra",
+      "country": "IN",
+      "latitude": 19.160522,
+      "longitude": 77.310478,
+      "aliases": [],
+      "is_major": false,
+      "confidence": 1
+    },
+    "meta": {
+      "api_version": "v1",
+      "request_id": "req_01M7BZJB579K2MCANXA61A4GJ2",
+      "trace_id": "trc_01M7BZJB574GK1N4MPNFXEB6PN",
+      "timestamp": "2026-11-14T08:23:13.777+05:30",
+      "freshness": {
+        "mode": "live",
+        "retrieved_at": "2026-11-14T02:53:13.777Z"
+      }
+    }
+  },
+  "rr_stations_count": 13015,
+  "rr_ned": "Nanded",
+  "rr_sur": "Solapur Jn",
+  "rc_trains_ned": {
+    "success": true,
+    "data": {
+      "results": [
+        {
+          "train_number": "07432",
+          "train_name": "BAM NED SPL",
+          "display_name": "07432 - BAM NED SPL",
+          "source_station_code": "BAM",
+          "destination_station_code": "NED",
+          "train_type": "UNKNOWN",
+          "running_days": []
+        },
+        {
+          "train_number": "07625",
+          "train_name": "NED PNVL SPL",
+          "display_name": "07625 - NED PNVL SPL",
+          "source_station_code": "NED",
+          "destination_station_code": "PNVL",
+          "train_type": "UNKNOWN",
+          "running_days": [
+            "MON",
+            "WED"
+          ]
+        },
+        {
+          "train_number": "07689",
+          "train_name": "NED TTZ SPL",
+          "display_name": "07689 - NED TTZ SPL",
+          "source_station_code": "NED",
+          "destination_station_code": "TTZ",
+          "train_type": "UNKNOWN",
+          "running_days": [
+            "SAT"
+          ]
+        },
+        {
+          "train_number": "07626",
+          "train_name": "PNVL NED SPL",
+          "display_name": "07626 - PNVL NED SPL",
+          "source_station_code": "PNVL",
+          "destination_station_code": "NED",
+          "train_type": "UNKNOWN",
+          "running_days": []
+        },
+        {
+          "train_number": "02768",
+          "train_name": "SRC NED SPL",
+          "display_name": "02768 - SRC NED SPL",
+          "source_station_code": "SRC",
+          "destination_station_code": "NED",
+          "train_type": "UNKNOWN",
+          "running_days": []
+        }
+      ],
+      "query": "NED",
+      "limit": 10
+    },
+    "meta": {
+      "api_version": "v1",
+      "request_id": "req_01M7BZJCWXT23A76XV596E74NR",
+      "trace_id": "trc_01M7BZJCWXD2SFN154ZYTWJ4DR",
+      "timestamp": "2026-11-14T08:23:15.926+05:30",
+      "freshness": {
+        "mode": "live",
+        "retrieved_at": "2026-11-14T02:53:15.926Z"
+      }
+    }
+  },
+  "rc_trains_nanded": {
+    "success": true,
+    "data": {
+      "results": [
+        {
+          "train_number": "16593",
+          "train_name": "Hazur Sahib Nanded Express",
+          "display_name": "16593 - Hazur Sahib Nanded Express",
+          "source_station_code": "SBC",
+          "destination_station_code": "NED",
+          "train_type": "MAIL_EXPRESS",
+          "running_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI",
+            "SAT",
+            "SUN"
+          ]
+        },
+        {
+          "train_number": "12486",
+          "train_name": "Hazur Sahib Nanded SF Express",
+          "display_name": "12486 - Hazur Sahib Nanded SF Express",
+          "source_station_code": "SGNR",
+          "destination_station_code": "NED",
+          "train_type": "SF",
+          "running_days": [
+            "TUE",
+            "SAT"
+          ]
+        },
+        {
+          "train_number": "17613",
+          "train_name": "Hazur Sahib Nanded Express",
+          "display_name": "17613 - Hazur Sahib Nanded Express",
+          "source_station_code": "PNVL",
+          "destination_station_code": "NED",
+          "train_type": "MAIL_EXPRESS",
+          "running_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI",
+            "SAT",
+            "SUN"
+          ]
+        },
+        {
+          "train_number": "12440",
+          "train_name": "Hazur Sahib Nanded SF Express",
+          "display_name": "12440 - Hazur Sahib Nanded SF Express",
+          "source_station_code": "SGNR",
+          "destination_station_code": "NED",
+          "train_type": "SF",
+          "running_days": [
+            "FRI"
+          ]
+        },
+        {
+          "train_number": "20811",
+          "train_name": "Hazur Sahib Nanded SF Express",
+          "display_name": "20811 - Hazur Sahib Nanded SF Express",
+          "source_station_code": "VSKP",
+          "destination_station_code": "NED",
+          "train_type": "SF",
+          "running_days": [
+            "TUE",
+            "WED",
+            "SAT"
+          ]
+        },
+        {
+          "train_number": "57651",
+          "train_name": "Hazur Sahib Nanded - Manmad Passenger",
+          "display_name": "57651 - Hazur Sahib Nanded - Manmad Passenger",
+          "source_station_code": "NED",
+          "destination_station_code": "MMR",
+          "train_type": "PASSENGER",
+          "running_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI",
+            "SAT",
+            "SUN"
+          ]
+        },
+        {
+          "train_number": "57652",
+          "train_name": "Manmad - Hazur Sahib Nanded Passenger",
+          "display_name": "57652 - Manmad - Hazur Sahib Nanded Passenger",
+          "source_station_code": "MMR",
+          "destination_station_code": "NED",
+          "train_type": "PASSENGER",
+          "running_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI",
+            "SAT",
+            "SUN"
+          ]
+        },
+        {
+          "train_number": "12422",
+          "train_name": "Hazur Sahib Nanded SF Express",
+          "display_name": "12422 - Hazur Sahib Nanded SF Express",
+          "source_station_code": "ASR",
+          "destination_station_code": "NED",
+          "train_type": "SF",
+          "running_days": [
+            "MON"
+          ]
+        },
+        {
+          "train_number": "17409",
+          "train_name": "Hazur Sahib Nanded Intercity Express",
+          "display_name": "17409 - Hazur Sahib Nanded Intercity Express",
+          "source_station_code": "ADB",
+          "destination_station_code": "NED",
+          "train_type": "INTERCITY",
+          "running_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI",
+            "SAT",
+            "SUN"
+          ]
+        },
+        {
+          "train_number": "12768",
+          "train_name": "Hazur Sahib Nanded SF Express",
+          "display_name": "12768 - Hazur Sahib Nanded SF Express",
+          "source_station_code": "SRC",
+          "destination_station_code": "NED",
+          "train_type": "SF",
+          "running_days": [
+            "WED"
+          ]
+        }
+      ],
+      "query": "Nanded",
+      "limit": 10
+    },
+    "meta": {
+      "api_version": "v1",
+      "request_id": "req_01M7BZJDBVW85WD9YNFGBTA1SX",
+      "trace_id": "trc_01M7BZJDBV31JWQ1MTMP52S43A",
+      "timestamp": "2026-11-14T08:23:16.046+05:30",
+      "freshness": {
+        "mode": "live",
+        "retrieved_at": "2026-11-14T02:53:16.046Z"
+      }
+    }
+  }
+}

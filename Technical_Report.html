@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Live Weight Tracker - Current Project Technical Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 14mm 16mm 14mm;
+      @bottom-right {
+        content: counter(page) " / " counter(pages);
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.5;
+      font-size: 11pt;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+    }
+    .header-banner {
+      border-bottom: 3px solid #002244;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-title-box h1 {
+      margin: 0;
+      font-size: 18pt;
+      color: #002244;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header-title-box .subtitle {
+      font-size: 9pt;
+      color: #475569;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+    .meta-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 22px;
+      font-size: 9pt;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 6px;
+    }
+    .meta-item strong {
+      color: #0f172a;
+    }
+    h2 {
+      font-size: 13pt;
+      color: #002244;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    h3 {
+      font-size: 10.5pt;
+      color: #0f172a;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    p, ul, ol {
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    code, pre {
+      font-family: "JetBrains Mono", Consolas, "Courier New", monospace;
+      font-size: 8.5pt;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 2px 4px;
+      border-radius: 3px;
+      border: 1px solid #e2e8f0;
+    }
+    pre {
+      display: block;
+      padding: 10px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin: 8px 0;
+      line-height: 1.4;
+    }
+    .formula-box {
+      background: #f8fafc;
+      border-left: 4px solid #003366;
+      border-top: 1px solid #e2e8f0;
+      border-right: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 8px 12px;
+      margin: 8px 0 12px 0;
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 9pt;
+      color: #002244;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 8.5pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #002244;
+      color: #ffffff;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      font-size: 8pt;
+    }
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 5px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+    .badge-sim {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+    .badge-pass {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+    .avoid-break {
+      page-break-inside: avoid;
+    }
+    .footer-note {
+      margin-top: 25px;
+      padding-top: 10px;
+      border-top: 1px solid #cbd5e1;
+      font-size: 8pt;
+      color: #64748b;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header-banner">
+    <div class="header-title-box">
+      <h1>Current Project Technical Report</h1>
+      <div class="subtitle">Smart Live Weight Tracker – Railway Passenger Coach Weight Monitoring, Crowd Management & Passenger Safety System</div>
+    </div>
+  </div>
+
+  <!-- METADATA BLOCK -->
+  <div class="meta-box">
+    <div class="meta-item"><strong>Evaluation Role:</strong> Senior Software Architect & Indian Patent Technical Analyst</div>
+    <div class="meta-item"><strong>Audit Date:</strong> November 13, 2026</div>
+    <div class="meta-item"><strong>Target Remote Host:</strong> wvtsqnyzgpbprywesolb.supabase.co (PostgreSQL Cloud)</div>
+    <div class="meta-item"><strong>Compliance Benchmark:</strong> RDSO Load Limits & Indian Railways Usability Standard</div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="avoid-break">
+    <h2>1. Project Overview & Tech Stack</h2>
+    <p>A strict inspection of <code>package.json</code>, system environment variables, and source tree imports establishes the following operational stack:</p>
+    
+    <h3>A. Programming Languages & Runtimes</h3>
+    <ul>
+      <li><strong>TypeScript (v5.7.3):</strong> Primary language used for all frontend views, state management contexts, API services, and calculation utilities. Strict type safety configured via <code>tsconfig.json</code>.</li>
+      <li><strong>JavaScript / Node.js (ESNext / Node.js v20+):**</strong> Used for regression test harnesses, deployment scripts, and system catalog verification in <code>/scripts</code>.</li>
+      <li><strong>SQL (PostgreSQL DDL/DML):</strong> Consolidated schema scripts, procedural triggers, Row Level Security (RLS) policies, and system catalog queries.</li>
+      <li><strong>HTML5 / CSS3:</strong> Rendered within the React Virtual DOM with responsive viewport tags.</li>
+    </ul>
+
+    <h3>B. Core Frameworks & Build Tooling</h3>
+    <ul>
+      <li><strong>React (v18.3.1):</strong> Component-driven SPA architecture using functional components and React Hooks (<code>useState</code>, <code>useEffect</code>, <code>useContext</code>, <code>useRef</code>, <code>useMemo</code>).</li>
+      <li><strong>Vite (v6.1.0 / @vitejs/plugin-react v4.3.4):</strong> Production bundler, Hot Module Replacement (HMR) server, asset hashing, and tree-shaking pipeline.</li>
+      <li><strong>React Router DOM (v7.18.5):</strong> Client-side hash routing (<code>HashRouter</code>) enabling role-gated URL resolution without server-side route redirection dependencies.</li>
+      <li><strong>Tailwind CSS (v3.4.17) with PostCSS & Autoprefixer:</strong> Utility-first styling framework configured with government-portal color palettes and dark mode support.</li>
+    </ul>
+
+    <h3>C. Libraries & Client-Side Modules</h3>
+    <ul>
+      <li><strong>@supabase/supabase-js (v2.48.1):</strong> PostgreSQL client library handling Supabase Auth sessions, PostgREST queries, and WebSocket channels.</li>
+      <li><strong>recharts (v2.15.1):</strong> SVG charting engine rendering live weight time-series area charts, bar graphs, and occupancy distribution diagrams.</li>
+      <li><strong>lucide-react (v0.475.0):</strong> Iconographic library for system indicators, badges, and telemetry state graphics.</li>
+      <li><strong>@electric-sql/pglite (v0.5.16) & pg (v8.23.1):</strong> Embedded WASM-compiled PostgreSQL 18.6 runtime used by test harnesses to validate SQL migrations locally without external network access.</li>
+    </ul>
+
+    <h3>D. Databases & Remote Infrastructure</h3>
+    <ul>
+      <li><strong>Remote Database:</strong> Supabase Cloud PostgreSQL Cluster (Host: <code>wvtsqnyzgpbprywesolb.supabase.co</code>).</li>
+      <li><strong>Local Fallback Storage:</strong> Web Storage API (<code>localStorage</code> & <code>sessionStorage</code>) partitioned under namespace keys (<code>slwt_*_v2</code>, <code>railway_auth_*_v2</code>).</li>
+      <li><strong>External AI Service Endpoint:</strong> <code>http://localhost:8000</code> (FastAPI backend interface defined via <code>VITE_AI_SERVICE_URL</code> in <code>src/services/aiClient.ts</code> with local deterministic fallback).</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 2 -->
+  <div>
+    <h2>2. Core Modules & File Structure</h2>
+    <pre>AI-Powered Railway Crowd Management System/
+├── index.html                      # Entry HTML with Google Fonts preloads
+├── package.json                    # Project manifest, script hooks & dependencies
+├── tsconfig.json                   # Strict TypeScript compiler options
+├── vite.config.ts                  # Vite build options & plugins
+├── tailwind.config.js              # Theme palettes, fonts, and dark mode configuration
+├── supabase/
+│   └── consolidated_phase4_migration.sql # 704-line DDL creating all 18 tables, triggers, and RLS
+├── scripts/
+│   ├── test_16_verification_checklist.mjs # 38-assertion regression harness
+│   ├── test_role_wise_auth_regression.mjs # 13-point role authentication tester
+│   ├── test_all_modules_regression.mjs    # End-to-end subsystem verification
+│   ├── test_supabase_live.mjs             # Remote PostgREST catalog inspector
+│   └── validate_postgres_runtime.mjs      # PGlite embedded PostgreSQL runtime validator
+└── src/
+    ├── App.tsx                     # Top-level Router, Route definitions & ProtectedRoute guards
+    ├── main.tsx                    # React DOM root bootstrapping with Context Providers
+    ├── types/
+    │   └── index.ts                # TypeScript data interfaces, enums, and domain contracts
+    ├── context/
+    │   ├── AuthContext.tsx         # Multi-role authentication, session tokens, duplicate guard
+    │   ├── TrainContext.tsx        # Train & coach operational state, auto-refresh, simulation
+    │   ├── LanguageContext.tsx     # Bilingual switching (English / मराठी)
+    │   └── ThemeContext.tsx        # Light / Dark mode persistence
+    ├── services/
+    │   ├── supabaseClient.ts       # Supabase client instantiation & connection ping tester
+    │   ├── aiClient.ts             # REST connector to FastAPI with local statistical fallback
+    │   ├── adminSecurityService.ts # SHA-256 salted PIN hasher and single-admin enforcement
+    │   ├── offlineStorage.ts       # LocalStorage CRUD persistence with versioned schemas
+    │   ├── coachLayoutService.ts   # 2D berth & seat generation (SL, 3A, 2A, 1A, CC, 2S, 3E)
+    │   ├── staffTaskService.ts     # User-isolated task assignment and status updates
+    │   ├── assistanceRequestService.ts # Passenger accessibility and porter request management
+    │   ├── auditService.ts         # Append-only audit logging helper
+    │   └── occupancyVerificationService.ts # Physical vs booked seat verification logging
+    ├── utils/
+    │   └── weightCalculations.ts   # Core RDSO-compliant weight, occupancy, and status formulas
+    ├── components/
+    │   ├── common/                 # Navbar, Footer, DisclaimerBanner, NotificationBell
+    │   ├── train/                  # TrainHorizontalView, CoachDetailModal, CoachCard
+    │   ├── coach/                  # CoachVisualLayout, CoachSelectionHeader, SubmissionForm
+    │   ├── admin/                  # AdminOperationsCenter, AdminStaffAndTaskManager
+    │   └── passenger/              # PassengerAdvancedFeatures (Companion, Lost&Found)
+    └── pages/
+        ├── LandingPage.tsx         # Public overview, system architecture explainer
+        ├── PassengerDashboard.tsx  # AI Boarding Assistant, Coach comparison table, 2D seat map
+        ├── TrainMonitoringPage.tsx # Fleet-wide rake monitoring and weight telemetry
+        ├── StationDisplay.tsx      # Fullscreen high-contrast station platform display board
+        ├── SensorSimulator.tsx     # Interactive bogie weight and load-cell adjuster
+        ├── StaffDashboard.tsx      # Duty staff task board, incident reporting, verification
+        ├── AdminDashboard.tsx      # Central Traffic Control (CTC) command console & PIN gateway
+        ├── ReportsPage.tsx         # Operational shift summaries, audit trails, export stubs
+        ├── SettingsPage.tsx        # Sensor calibration thresholds and system parameters
+        ├── HelpPage.tsx            # RDSO guidelines, system architecture documentation
+        ├── ProfilePage.tsx         # User profile data, active assistance requests
+        └── AuthPages.tsx           # Tri-role login, passenger sign-up, staff registration</pre>
+
+    <h3>Module Functional Summary:</h3>
+    <ul>
+      <li><strong>Authentication & Security:</strong> Enforces role segregation for <code>admin</code>, <code>staff</code>, and <code>passenger</code>. Protects Admin with MFA PIN (SHA-256 salted hash); halts unapproved staff until Admin verification.</li>
+      <li><strong>Telemetry & Monitoring:</strong> Calculates tare weights, payload limits, occupancy percentages, and overloads with 3-second auto-refresh cycles.</li>
+      <li><strong>AI Passenger Guidance:</strong> Identifies least-crowded coaches, generates class-specific alternatives, and calculates platform stoppage pillar zones.</li>
+      <li><strong>Operations & Administration:</strong> Handles staff approvals, task delegations, sensor tare calibration, and append-only audit tracking.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 3 -->
+  <div class="avoid-break">
+    <h2>3. Data Flow & Architecture</h2>
+    <p>The system operates a multi-tier data flow combining client-side reactive state, REST/PostgREST database persistence, and browser local storage:</p>
+
+    <ol>
+      <li><strong>Data Ingestion Stage:</strong> Telemetry originates from the software simulation engine (<code>SensorSimulator.tsx</code>), manual administrative entry, or commuter check-in forms. Physical load cells are software-simulated.</li>
+      <li><strong>Processing & Validation Engine:</strong> Raw weights in kg are converted synchronously into net payload, clamped occupancy percentages, and safety hazard states via <code>weightCalculations.ts</code>.</li>
+      <li><strong>State Distribution & Persistence:</strong> <code>TrainContext</code> dispatches state updates across all listening components. When connected to Supabase, mutations sync to remote tables; otherwise, state falls back to versioned <code>localStorage</code> (<code>slwt_trains_v2</code>).</li>
+      <li><strong>Presentation Layer:</strong> Frontends render color-coded coach cards, platform pillar advice (Pillars 1–6, 7–12, 13–18), SVG rake side-elevations, and LED-styled station boards.</li>
+    </ol>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div>
+    <h2>4. Algorithms & Prediction Logic</h2>
+    <p>All mathematical formulas, classification thresholds, and forecasting models implemented in <code>weightCalculations.ts</code> and <code>aiClient.ts</code> are strictly detailed below:</p>
+
+    <h3>A. Net Passenger Payload & Occupancy Percentage</h3>
+    <div class="formula-box">
+Payload Capacity = max(1, Max_Capacity_Kg - Empty_Weight_Kg)<br>
+Net Passenger Payload = max(0, Current_Weight_Kg - Empty_Weight_Kg)<br>
+Raw Occupancy % = (Net Passenger Payload / Payload Capacity) * 100<br>
+Clamped Occupancy % = min(100, max(0, round(Raw Occupancy %, 1)))
+    </div>
+
+    <h3>B. Structural Hazard & Occupancy Classification Thresholds</h3>
+    <ul>
+      <li><strong>Overloaded (Status: 'overloaded'):</strong> Triggered when <code>Current_Weight_Kg > Max_Capacity_Kg</code>. Excess Weight = <code>Current_Weight_Kg - Max_Capacity_Kg</code>.</li>
+      <li><strong>Full / Heavy (Status: 'full'):</strong> Triggered when <code>Current_Weight_Kg <= Max_Capacity_Kg</code> AND <code>Raw Occupancy > 75%</code>.</li>
+      <li><strong>Moderately Crowded (Status: 'moderate'):</strong> Triggered when <code>40% < Raw Occupancy <= 75%</code>.</li>
+      <li><strong>Space Available (Status: 'available'):</strong> Triggered when <code>Raw Occupancy <= 40%</code>.</li>
+    </ul>
+
+    <h3>C. Passenger Count Estimation Formula</h3>
+    <div class="formula-box">
+Estimated Passenger Count = round(Net Passenger Payload / 78 kg)
+    </div>
+
+    <h3>D. AI Coach Recommendation Selection</h3>
+    <p>Filters out non-passenger stock (<code>coach_type != 'Engine' AND coach_type != 'Pantry Car'</code>). Sorts by <code>occupancy_percentage</code> ascending. Identifies the coach with the lowest bogie suspension strain.</p>
+
+    <h3>E. Time-Series Crowd Forecasting (15, 30, and 60-Minute Horizons)</h3>
+    <div class="formula-box">
+Step Multiplier = Horizon_Minutes / 15<br>
+Rush Factor = 1.4 if Rush Hour else 1.0<br>
+Base Surge = 380 kg (if General Class) else 180 kg<br>
+Projected Weight = min(Max_Capacity * 1.15, max(Empty_Weight, Current_Weight + (Base Surge * Step * Rush Factor)))<br>
+Projected Occupancy % = round(((Projected Weight - Empty_Weight) / Payload Capacity) * 100, 1)<br>
+Confidence: 15 min = 0.92 | 30 min = 0.84 | 60 min = 0.73
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 5 -->
+  <div class="avoid-break">
+    <h2>5. System Performance & Technical Metrics</h2>
+    <ul>
+      <li><strong>Telemetry Polling Cadence:</strong> Regulated by a 1000ms <code>setInterval</code> with a 3-second auto-refresh counter (<code>autoRefreshCounter</code>) updating state in memory without full-page reloads.</li>
+      <li><strong>Client Caching & Offline Resilience:</strong> Storage keys (<code>slwt_trains_v2</code>, <code>slwt_notifications_v2</code>, <code>slwt_incidents_v2</code>) maintain version isolation. If remote Supabase endpoints fail, the app switches to local storage seamlessly.</li>
+      <li><strong>Database Indexing & Integrity:</strong> Optimized B-Tree indexes on <code>coaches(train_id)</code>, <code>weight_readings(coach_id)</code>, <code>weight_readings(recorded_at DESC)</code>, and <code>notifications(is_read)</code>. Enforces <code>UNIQUE(train_id, coach_no)</code> and <code>UNIQUE(coach_id, seat_number)</code>.</li>
+      <li><strong>Security Verification:</strong> Salted SHA-256 PIN hashing with rate-limited attempt counters. PostgreSQL trigger <code>public.protect_profile_role()</code> blocks unauthorized self-elevation in <code>public.profiles</code>.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div>
+    <h2>6. Missing Gaps (What is NOT Coded Yet)</h2>
+    <p>To ensure strict factual accuracy, the following items currently exist as UI representations, client-side simulations, or architectural stubs without active production backend connections:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 5%;">#</th>
+          <th style="width: 25%;">Feature / Module</th>
+          <th style="width: 25%;">UI Presentation</th>
+          <th style="width: 45%;">Actual Backend Status & Code Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>Physical Bogie IoT Load Cells</strong></td>
+          <td>Displays HX711, strain gauges, and piezo sensor readings</td>
+          <td><span class="badge badge-sim">Simulation Only</span> Physical hardware is not connected. Data is generated via mathematical sliders and randomized surge algorithms (<code>src/context/TrainContext.tsx</code>, lines 77–87).</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>CRIS / IRCTC Live PNR Sync</strong></td>
+          <td>PNR enquiry input, passenger name masking, seat status</td>
+          <td><span class="badge badge-sim">Local Mockup</span> Does not connect to the Indian Railways Centre for Railway Information Systems (CRIS) API. Uses local static records (<code>src/components/coach/CoachVisualLayout.tsx</code>).</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>External FastAPI ML Service</strong></td>
+          <td>Code contains HTTP fetch to <code>http://localhost:8000/predict</code></td>
+          <td><span class="badge badge-sim">Fallback Active</span> When no local FastAPI server is running on port 8000, it falls back to the local time-series math function (<code>src/services/aiClient.ts</code>, lines 74–78).</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Automated WhatsApp / SMS Gateway</strong></td>
+          <td>UI displays "SMS / WhatsApp Alert Dispatched" badges</td>
+          <td><span class="badge badge-sim">UI Indicator Only</span> No Twilio, Gupshup, or telecom SMS API integration is configured (<code>src/components/passenger/PassengerAdvancedFeatures.tsx</code>).</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Live RPF Police Dispatch Telephony</strong></td>
+          <td>UI shows "SOS Dispatched to RPF Escort Desk"</td>
+          <td><span class="badge badge-sim">Database Event Only</span> Creates a record in <code>incidents</code> table; does not dial physical emergency lines or dispatch CAD radios (<code>src/components/admin/AdminOperationsCenter.tsx</code>).</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>Payment Gateway for Overweight Fines</strong></td>
+          <td>Displays luggage weight fine calculator and fee amounts</td>
+          <td><span class="badge badge-sim">Mathematical Stubs</span> Calculates excess baggage fees based on kg; does not integrate Razorpay, PayU, or UPI gateways (<code>src/components/admin/AdminOperationsCenter.tsx</code>).</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><strong>Automated Export to Official Railway PDF</strong></td>
+          <td>Buttons labeled "Export Shift Audit PDF / Excel"</td>
+          <td><span class="badge badge-sim">Browser Print / CSV Stubs</span> Generates basic CSV downloads or opens <code>window.print()</code>; does not format binary PDF documents via PDFKit or Puppeteer (<code>src/pages/ReportsPage.tsx</code>).</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><strong>Hardware Disconnection Detection</strong></td>
+          <td>Sensor status indicators show "Online / Standby"</td>
+          <td><span class="badge badge-sim">Calculated Heuristic</span> Evaluates timestamp deltas in software; no physical heartbeat pings exist from physical IoT microcontrollers (ESP32/STM32) (<code>src/pages/SettingsPage.tsx</code>).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-note">
+    Smart Live Weight Tracker • Official Architecture & Technical Audit Documentation • Generated for Indian Patent & Research Verification
+  </div>
+
+</body>
+</html>
