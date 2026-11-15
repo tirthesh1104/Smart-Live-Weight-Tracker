@@ -20,6 +20,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { TrainHorizontalView } from '../components/train/TrainHorizontalView';
 import { AIClientService } from '../services/aiClient';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
+import { SimplePageExplainer } from '../components/common/SimplePageExplainer';
 import { useNavigate, Link } from 'react-router-dom';
 import indianRailwaysLogo from '../assets/indian-railways-logo.png';
 
@@ -104,6 +105,9 @@ export const UnifiedDashboard: React.FC = () => {
 
       {/* Prominent Legal Disclaimer */}
       <DisclaimerBanner />
+
+      {/* Simple Page Explainer for Master Dashboard */}
+      <SimplePageExplainer pageKey="dashboard" />
 
       {/* Official KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

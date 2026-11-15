@@ -32,6 +32,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { calculateCoachOccupancy } from '../utils/weightCalculations';
 import { AIClientService, CrowdBalancingResult } from '../services/aiClient';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
+import { SimplePageExplainer } from '../components/common/SimplePageExplainer';
 import { StationDisplayCoachSeatView } from '../components/coach/StationDisplayCoachSeatView';
 import { TrainHorizontalView } from '../components/train/TrainHorizontalView';
 import indianRailwaysLogo from '../assets/indian-railways-logo.png';
@@ -370,6 +371,9 @@ export const StationDisplay: React.FC = () => {
 
       {/* Mandatory Prototype Notice */}
       <DisclaimerBanner />
+
+      {/* Simple Page Explainer for Station Platform Display */}
+      {!isFullscreen && <SimplePageExplainer pageKey="display" />}
 
       {/* Train Info Banner */}
       {currentTrain && (

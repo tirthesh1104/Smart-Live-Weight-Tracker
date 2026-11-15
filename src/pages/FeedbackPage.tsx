@@ -33,6 +33,7 @@ import {
 } from '../types';
 import { FeedbackService, SubmitFeedbackPayload } from '../services/feedbackService';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
+import { SimplePageExplainer } from '../components/common/SimplePageExplainer';
 
 export const FeedbackPage: React.FC = () => {
   const { user, isAdmin, isStaff } = useAuth();
@@ -256,6 +257,9 @@ export const FeedbackPage: React.FC = () => {
 
       {/* Mandatory Disclaimer */}
       <DisclaimerBanner />
+
+      {/* Simple Page Explainer for Grievance & Feedback Desk */}
+      <SimplePageExplainer pageKey="feedback" />
 
       {/* KPI Stat Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

@@ -30,6 +30,7 @@ import { useAuth } from '../context/AuthContext';
 import { TrainHorizontalView } from '../components/train/TrainHorizontalView';
 import { CoachDetailModal } from '../components/train/CoachDetailModal';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
+import { SimplePageExplainer } from '../components/common/SimplePageExplainer';
 import { AIClientService } from '../services/aiClient';
 import { Coach } from '../types';
 import { CoachSelectionHeader } from '../components/coach/CoachSelectionHeader';
@@ -199,6 +200,9 @@ export const PassengerDashboard: React.FC = () => {
 
       {/* Prominent Mandatory Legal Disclaimer */}
       <DisclaimerBanner />
+
+      {/* Simple Page Explainer for Passengers */}
+      <SimplePageExplainer pageKey="passenger" />
 
       {/* Simulation Session Notice banner (if simulation scenario is active) */}
       {simulatedTrain && (

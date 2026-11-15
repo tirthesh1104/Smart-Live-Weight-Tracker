@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Coach } from '../../types';
 import { calculateCoachOccupancy, formatWeight } from '../../utils/weightCalculations';
 import { CoachLayoutService } from '../../services/coachLayoutService';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   Sparkles, 
   AlertTriangle, 
@@ -47,8 +48,11 @@ export const TrainHorizontalView: React.FC<TrainHorizontalViewProps> = ({
   onSelectCoach,
   selectedCoachId
 }) => {
+  const { language } = useLanguage();
+  const isMr = language === 'mr';
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [internalSelectedId, setInternalSelectedId] = useState<string>('');
+  const [showTechnicalDetails, setShowTechnicalDetails] = useState<boolean>(false);
 
   // Active selected coach: controlled prop takes precedence, fallback to internal, fallback to first passenger coach
   const passengerCoaches = coaches.filter(c => c.coach_type !== 'Engine');
@@ -859,8 +863,56 @@ export const TrainHorizontalView: React.FC<TrainHorizontalViewProps> = ({
 
           </div>
 
+          {/* Plain-Language Status & Action Recommendation Banner */}
+          <div className={`p-3 rounded-md border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs ${
+            activeOcc?.isOverloaded
+              ? 'bg-rose-50 dark:bg-rose-950/50 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200'
+              : (activeOcc?.clampedOccupancy || 0) > 75
+              ? 'bg-amber-50 dark:bg-amber-950/50 border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200'
+              : 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200'
+          }`}>
+            <div className="flex items-center gap-2.5">
+              {activeOcc?.isOverloaded ? (
+                <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0" />
+              ) : (activeOcc?.clampedOccupancy || 0) > 75 ? (
+                <Info className="w-5 h-5 text-amber-600 shrink-0" />
+              ) : (
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+              )}
+              <div>
+                <span className="font-bold text-sm block">
+                  {activeOcc?.isOverloaded 
+                    ? (isMr ? "डबा ओव्हरलोड: वजन सुरक्षित मर्यादेपेक्षा जास्त आहे." : "Overloaded: Weight is above the configured limit.")
+                    : (activeOcc?.clampedOccupancy || 0) > 75
+                    ? (isMr ? "डब्यात गर्दी जास्त: उभे राहून प्रवास करावा लागू शकतो." : "Crowded: The coach is getting crowded.")
+                    : (isMr ? "सुरक्षित आणि जागा उपलब्ध: डब्यात बसायला पुरेशी जागा शिल्लक आहे." : "Normal: The coach is within the configured limit.")}
+                </span>
+                <span className="text-xs opacity-90 mt-0.5 block">
+                  <strong>{isMr ? "मी आता काय करावे? " : "What should I do next? "}</strong>
+                  {activeOcc?.isOverloaded
+                    ? (isMr ? "कृपया या डब्यात चढू नका; अधिक जागेसाठी शेजारचा मोकळा डबा निवडा." : "Boarding discouraged. Please check adjacent coaches with more space.")
+                    : (activeOcc?.clampedOccupancy || 0) > 75
+                    ? (isMr ? "डब्यात गर्दी जास्त आहे. आरामासाठी कमी गर्दीचा डबा तपासा." : "Coach is crowded. Consider checking an adjacent coach for available seats.")
+                    : (isMr ? "तुम्ही या डब्यात आरामात आणि सुरक्षितपणे चढू शकता." : "Space is available. Safe to board this coach.")}
+                </span>
+              </div>
+            </div>
+
+            {/* Toggle Button for Technical Engineering Charts */}
+            <button
+              onClick={() => setShowTechnicalDetails(!showTechnicalDetails)}
+              type="button"
+              className="px-3 py-1.5 rounded-xs bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 font-bold text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer transition shrink-0 self-start sm:self-auto shadow-xs"
+            >
+              {showTechnicalDetails 
+                ? (isMr ? "तांत्रिक आलेख लपवा" : "Hide Technical Charts") 
+                : (isMr ? "अधिक तांत्रिक तपशील व आलेख पहा" : "Show Technical Details & Charts")}
+            </button>
+          </div>
+
           {/* C. Interactive Visual Analytics: Weight Trend & Whole-Rake Comparison Charts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-1">
+          {showTechnicalDetails && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-1 animate-fadeIn">
             
             {/* 1. Selected Coach Weight Trend Area Chart */}
             <div className="p-3.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-sm space-y-2">
@@ -940,12 +992,18 @@ export const TrainHorizontalView: React.FC<TrainHorizontalViewProps> = ({
             </div>
 
           </div>
+          )}
 
           {/* D. AI Crowd Predictions (15m, 30m, 60m Horizon Cards) */}
-          <div className="space-y-2 pt-1 border-t border-slate-200 dark:border-slate-800">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-[#002244] dark:text-blue-300">
-              <Sparkles className="w-4 h-4 text-amber-500" />
-              <span>AI Crowd Dynamics &amp; Station Approach Forecasting (Coach {activeSelected.coach_no})</span>
+          <div className="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-[#002244] dark:text-blue-300">
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span>{isMr ? `पुढील गर्दीचा AI अंदाज (डबा ${activeSelected.coach_no})` : `AI Crowd Forecast: What may happen next (Coach ${activeSelected.coach_no})`}</span>
+              </div>
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                {isMr ? "पुढील १५, ३० व ६० मिनिटांतील अंदाजित गर्दी" : "Estimates how full the coach may become in 15, 30, or 60 mins"}
+              </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">

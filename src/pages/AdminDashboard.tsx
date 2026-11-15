@@ -62,6 +62,7 @@ import { formatWeight, calculateCoachOccupancy } from '../utils/weightCalculatio
 import { OfflineStorageService } from '../services/offlineStorage';
 import { AIClientService } from '../services/aiClient';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
+import { SimplePageExplainer } from '../components/common/SimplePageExplainer';
 import indianRailwaysLogo from '../assets/indian-railways-logo.png';
 import { Train, Coach, UserProfile } from '../types';
 import { AdminCoachSeatManager } from '../components/coach/AdminCoachSeatManager';
@@ -1100,6 +1101,9 @@ export const AdminDashboard: React.FC = () => {
 
       {/* Prominent Legal Disclaimer */}
       <DisclaimerBanner />
+
+      {/* Simple Page Explainer for Administrators & Evaluators */}
+      <SimplePageExplainer pageKey="admin" />
 
       {/* 8 Official KPI Summary Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5">

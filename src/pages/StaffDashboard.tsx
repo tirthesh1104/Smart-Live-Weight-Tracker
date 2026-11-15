@@ -23,6 +23,7 @@ import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { formatWeight, calculateCoachOccupancy } from '../utils/weightCalculations';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
+import { SimplePageExplainer } from '../components/common/SimplePageExplainer';
 import indianRailwaysLogo from '../assets/indian-railways-logo.png';
 import { StaffCoachSeatManager } from '../components/coach/StaffCoachSeatManager';
 import { StaffAdvancedFeatures } from '../components/staff/StaffAdvancedFeatures';
@@ -145,6 +146,9 @@ export const StaffDashboard: React.FC = () => {
 
       {/* Prominent Legal Disclaimer */}
       <DisclaimerBanner />
+
+      {/* Simple Page Explainer for Railway Staff */}
+      <SimplePageExplainer pageKey="monitoring" />
 
       {/* Overload Alert Notification Banner for Staff */}
       {coachAlerts.some(n => n.severity === 'overload') && (

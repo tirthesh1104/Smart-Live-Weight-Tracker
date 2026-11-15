@@ -15,12 +15,14 @@ import {
   UserCheck, 
   FileText, 
   Train,
-  Settings
+  Settings,
+  BookOpen
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
 import { NotificationBell } from './NotificationBell';
+import { HowToUseModal } from './HowToUseModal';
 import indianRailwaysLogo from '../../assets/indian-railways-logo.png';
 
 interface NavbarProps {
@@ -33,6 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = '', navigate }) =
   const { theme, toggleTheme } = useTheme();
   const { user, logout, isAdmin, isStaff, isAuthenticated } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showGuideModal, setShowGuideModal] = useState(false);
 
   // Font size state
   const handleFontSize = (size: 'sm' | 'base' | 'lg') => {
@@ -154,6 +157,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = '', navigate }) =
                   <span className="hidden sm:inline">Dark Mode</span>
                 </>
               )}
+            </button>
+
+            {/* 1-Click First-Time User Guide Button */}
+            <button
+              onClick={() => setShowGuideModal(true)}
+              className="flex items-center gap-1.5 px-2 py-0.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-xs cursor-pointer text-[11px] shadow-xs transition"
+              title={language === 'mr' ? 'वेबसाइट कशी वापरावी ते शिका (१० पायऱ्या)' : 'Learn how to use this website (10 easy steps)'}
+              aria-label="How to Use This Website"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-slate-950" />
+              <span>{language === 'mr' ? 'कशी वापरावी?' : 'How to Use'}</span>
             </button>
 
             {/* Notification Bell */}
@@ -312,6 +326,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = '', navigate }) =
           </div>
         )}
       </nav>
+
+      {/* First-Time User Guide Modal */}
+      <HowToUseModal 
+        isOpen={showGuideModal} 
+        onClose={() => setShowGuideModal(false)} 
+        navigate={navigate} 
+      />
 
     </header>
   );

@@ -29,11 +29,13 @@ import { useLanguage } from '../context/LanguageContext';
 import { useTrain, SimulationScenarioId } from '../context/TrainContext';
 import { calculateCoachOccupancy, formatWeight } from '../utils/weightCalculations';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
+import { SimplePageExplainer } from '../components/common/SimplePageExplainer';
 import indianRailwaysLogo from '../assets/indian-railways-logo.png';
 
 export const SensorSimulator: React.FC = () => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isMr = language === 'mr';
   const [activeScenarioId, setActiveScenarioId] = useState<SimulationScenarioId | null>(null);
   const {
     simulatedTrain,
@@ -52,16 +54,86 @@ export const SensorSimulator: React.FC = () => {
   } = useTrain();
 
   const SCENARIOS: { id: SimulationScenarioId; name: string; desc: string; icon: any; badge: string; color: string }[] = [
-    { id: 'empty_train', name: '1. Empty Train (Tare)', desc: 'Zero passenger baseline (0% occupancy)', icon: RotateCcw, badge: '0% OCC', color: 'border-slate-300 dark:border-slate-700' },
-    { id: 'normal_load', name: '2. Normal Load', desc: 'Standard uniform distribution (45-65%)', icon: Users, badge: '45-65%', color: 'border-blue-400 dark:border-blue-600' },
-    { id: 'peak_hour', name: '3. Peak-Hour Crowd', desc: 'High commuter rush (88-104% occupancy)', icon: TrendingUp, badge: 'RUSH', color: 'border-orange-400 dark:border-orange-600' },
-    { id: 'festival_rush', name: '4. Festival Rush', desc: 'Diwali/Chhath surge (>115% critical overload)', icon: Zap, badge: '>115%', color: 'border-rose-500 dark:border-rose-700' },
-    { id: 'weekend_rush', name: '5. Weekend Rush', desc: 'Holiday leisure traffic (72-88% occupancy)', icon: Calendar, badge: 'WEEKEND', color: 'border-amber-400 dark:border-amber-600' },
-    { id: 'overloaded_coach', name: '6. Overloaded Coach', desc: 'Isolated coaches (GEN-1 & S1) pushed to 122%', icon: AlertTriangle, badge: 'OVERLOAD', color: 'border-red-600 dark:border-red-700' },
-    { id: 'uneven_occupancy', name: '7. Uneven Occupancy', desc: 'Front 98%, Middle 28% (Tests crowd balancing)', icon: SlidersHorizontal, badge: 'IMBALANCE', color: 'border-purple-400 dark:border-purple-600' },
-    { id: 'sudden_boarding', name: '8. Sudden Boarding', desc: 'Major junction surge (+45 passengers/coach)', icon: ArrowUpCircle, badge: '+45 PAX', color: 'border-emerald-500 dark:border-emerald-600' },
-    { id: 'passenger_departure', name: '9. Passenger Departure', desc: 'Terminal alighting (-40 passengers/coach)', icon: ArrowDownCircle, badge: '-40 PAX', color: 'border-teal-500 dark:border-teal-600' },
-    { id: 'journey_progression', name: '10. Journey Progression', desc: 'Multi-stop journey load curve progression', icon: Activity, badge: 'TRANSIT', color: 'border-indigo-500 dark:border-indigo-600' }
+    { 
+      id: 'empty_train', 
+      name: isMr ? '१. रिकामी गाडी (०% गर्दी)' : '1. Empty Coach (0% Full)', 
+      desc: isMr ? 'प्रवाशांशिवाय केवळ मूळ वजन - कोणतीही गर्दी नाही' : 'No passengers in sample scenario (Tare weight baseline)', 
+      icon: RotateCcw, 
+      badge: '0% FULL', 
+      color: 'border-slate-300 dark:border-slate-700' 
+    },
+    { 
+      id: 'normal_load', 
+      name: isMr ? '२. सामान्य गर्दी (४५-६५%)' : '2. Normal Crowd (45-65%)', 
+      desc: isMr ? 'प्रवाशांची सामान्य संख्या - बसण्यासाठी पुरेशी जागा उपलब्ध' : 'A normal passenger load (Comfortable, space available)', 
+      icon: Users, 
+      badge: 'NORMAL', 
+      color: 'border-blue-400 dark:border-blue-600' 
+    },
+    { 
+      id: 'peak_hour', 
+      name: isMr ? '३. व्यस्त डबा (८८-१०४%)' : '3. Busy Coach (88-104%)', 
+      desc: isMr ? 'कामाच्या वेळेतील गर्दी - उभे राहून प्रवास' : 'Many passengers (Standing room only commute)', 
+      icon: TrendingUp, 
+      badge: 'BUSY', 
+      color: 'border-orange-400 dark:border-orange-600' 
+    },
+    { 
+      id: 'festival_rush', 
+      name: isMr ? '४. खूप गर्दी / सणासुदीची गर्दी' : '4. Very Crowded (Festival Rush)', 
+      desc: isMr ? 'सणासुदीच्या काळातील प्रचंड गर्दी (>११५% ओव्हरलोड)' : 'A very high passenger load (>115% critical surge)', 
+      icon: Zap, 
+      badge: '>115%', 
+      color: 'border-rose-500 dark:border-rose-700' 
+    },
+    { 
+      id: 'weekend_rush', 
+      name: isMr ? '५. वीकेंड गर्दी (७२-८८%)' : '5. Weekend Rush (72-88%)', 
+      desc: isMr ? 'सुट्टीच्या दिवसांतील मध्यम-जास्त प्रवासी संख्या' : 'Moderate weekend holiday passenger travel', 
+      icon: Calendar, 
+      badge: 'WEEKEND', 
+      color: 'border-amber-400 dark:border-amber-600' 
+    },
+    { 
+      id: 'overloaded_coach', 
+      name: isMr ? '६. ओव्हरलोड नमुना (>१२०%)' : '6. Overloaded Example (>120%)', 
+      desc: isMr ? 'सुरक्षित मर्यादेपेक्षा जास्त वजनाचे प्रात्यक्षिक' : 'Demonstration of weight above the configured safety limit', 
+      icon: AlertTriangle, 
+      badge: 'OVERLOAD', 
+      color: 'border-red-600 dark:border-red-700' 
+    },
+    { 
+      id: 'uneven_occupancy', 
+      name: isMr ? '७. विषम डबा गर्दी' : '7. Uneven Coach Crowd', 
+      desc: isMr ? 'पुढील डब्यात ९८% तर मधल्या डब्यात २८% गर्दी' : 'Front coaches packed (98%), middle coaches empty (28%)', 
+      icon: SlidersHorizontal, 
+      badge: 'UNEVEN', 
+      color: 'border-purple-400 dark:border-purple-600' 
+    },
+    { 
+      id: 'sudden_boarding', 
+      name: isMr ? '८. अचानक चढलेली गर्दी' : '8. Sudden Boarding (+45)', 
+      desc: isMr ? 'मोठ्या जंक्शनवर एकदम ४५ प्रवासी वाढणे' : 'Major junction stepped influx (+45 passengers/coach)', 
+      icon: ArrowUpCircle, 
+      badge: '+45 PAX', 
+      color: 'border-emerald-500 dark:border-emerald-600' 
+    },
+    { 
+      id: 'passenger_departure', 
+      name: isMr ? '९. प्रवासी उतरणे (-४०)' : '9. Passengers Leaving (-40)', 
+      desc: isMr ? 'स्थानकावर प्रवासी उतरल्यामुळे वजन कमी होणे' : 'Terminal station drop (-40 passengers/coach)', 
+      icon: ArrowDownCircle, 
+      badge: '-40 PAX', 
+      color: 'border-teal-500 dark:border-teal-600' 
+    },
+    { 
+      id: 'journey_progression', 
+      name: isMr ? '१०. प्रवासाचा टप्पा' : '10. Journey Progression', 
+      desc: isMr ? 'अनेक स्थानकांदरम्यान सतत बदलणारी गर्दी' : 'Multi-stop journey load curve progression', 
+      icon: Activity, 
+      badge: 'TRANSIT', 
+      color: 'border-indigo-500 dark:border-indigo-600' 
+    }
   ];
 
   const handleSelectScenario = (id: SimulationScenarioId) => {
@@ -118,6 +190,9 @@ export const SensorSimulator: React.FC = () => {
 
       {/* Prominent Mandatory Legal Disclaimer */}
       <DisclaimerBanner />
+
+      {/* Simple Page Explainer for Beginners & Viva Evaluators */}
+      <SimplePageExplainer pageKey="simulator" />
 
       {/* Simulation Scenario Status & Session Management */}
       <div className="gov-card p-4 space-y-3">
@@ -182,7 +257,7 @@ export const SensorSimulator: React.FC = () => {
                   title="Generate normal random crowd variance"
                 >
                   <Users className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                  <span>Random Crowd</span>
+                  <span>{isMr ? "सामान्य गर्दी" : "Normal Crowd"}</span>
                 </button>
 
                 <button
@@ -191,7 +266,7 @@ export const SensorSimulator: React.FC = () => {
                   title="Inject severe peak rush hour overload (>100%)"
                 >
                   <AlertTriangle className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />
-                  <span>Rush Hour Surge</span>
+                  <span>{isMr ? "जास्त गर्दी (Rush)" : "Rush Hour Crowd"}</span>
                 </button>
 
                 <button
@@ -200,7 +275,7 @@ export const SensorSimulator: React.FC = () => {
                   title="Reset all coaches to empty tare weight"
                 >
                   <RotateCcw className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
-                  <span>Empty Train (Tare)</span>
+                  <span>{isMr ? "रिकामी गाडी (0%)" : "Empty Coach (0%)"}</span>
                 </button>
 
                 <button
@@ -214,12 +289,12 @@ export const SensorSimulator: React.FC = () => {
                   {isAutoSimulating ? (
                     <>
                       <Pause className="w-3.5 h-3.5" />
-                      <span>Stop Auto-Simulate</span>
+                      <span>{isMr ? "स्वयंचलित चाचणी थांबवा" : "Stop Auto Demo"}</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-3.5 h-3.5" />
-                      <span>Start Continuous Drift</span>
+                      <span>{isMr ? "स्वयंचलित चाचणी सुरू करा" : "Start Auto Demo"}</span>
                     </>
                   )}
                 </button>
@@ -227,18 +302,29 @@ export const SensorSimulator: React.FC = () => {
             </div>
 
             {/* 10 Realistic Railway Simulation Scenarios Palette */}
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-md space-y-2">
-              <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+            <div className="p-3.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-md space-y-2.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-1.5 border-b border-slate-200 dark:border-slate-700">
+                <span className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 text-xs">
                   <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                  <span>Configurable Railway Crowd Scenarios (10 Presets)</span>
+                  <span>{isMr ? "१० सराव परिस्थिती (नमुना गर्दी चाचणी)" : "10 Practice Scenarios (Sample Crowd Testing)"}</span>
                 </span>
                 <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-xs bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700 font-mono">
                   SIMULATED DATA ONLY
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+              {/* What Happens Callout */}
+              <div className="p-2 bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-sm text-[11px] text-blue-900 dark:text-blue-300 flex items-start gap-1.5">
+                <Info className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+                <span>
+                  <strong>{isMr ? "हे कसे कार्य करते? " : "What happens when you click a scenario? "}</strong>
+                  {isMr 
+                    ? "कोणतेही बटण दाबताच गाडीच्या डब्यांचे वजन आणि गर्दी आपोआप बदलेल. प्रवासी व कर्मचाऱ्यांच्या स्क्रीनवर याचा परिणाम कसा दिसतो हे तुम्ही लगेच तपासू शकता."
+                    : "The coach gross weight and crowd indicators will instantly update across all passenger, staff, and station display screens so you can observe how alarms and recommendations respond in real time."}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
                 {SCENARIOS.map(sc => {
                   const Icon = sc.icon;
                   const isSelected = activeScenarioId === sc.id;
@@ -246,24 +332,24 @@ export const SensorSimulator: React.FC = () => {
                     <button
                       key={sc.id}
                       onClick={() => handleSelectScenario(sc.id)}
-                      className={`p-2 rounded-sm border text-left transition cursor-pointer flex flex-col justify-between h-20 ${
+                      className={`p-2.5 rounded-sm border text-left transition cursor-pointer flex flex-col justify-between min-h-[92px] ${
                         isSelected 
-                          ? 'bg-blue-50 dark:bg-blue-950/60 border-blue-600 dark:border-blue-400 ring-1 ring-blue-500' 
+                          ? 'bg-blue-50 dark:bg-blue-950/60 border-blue-600 dark:border-blue-400 ring-1 ring-blue-500 shadow-xs' 
                           : 'bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700'
                       }`}
                       title={sc.desc}
                     >
-                      <div className="flex items-center justify-between">
-                        <Icon className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
+                      <div className="flex items-center justify-between mb-1">
+                        <Icon className="w-4 h-4 text-slate-600 dark:text-slate-400" />
                         <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
                           {sc.badge}
                         </span>
                       </div>
                       <div>
-                        <div className="text-[11px] font-bold text-slate-900 dark:text-slate-100 leading-tight">
+                        <div className="text-xs font-bold text-slate-900 dark:text-slate-100 leading-snug">
                           {sc.name}
                         </div>
-                        <div className="text-[9px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-1 line-clamp-2">
                           {sc.desc}
                         </div>
                       </div>
@@ -340,7 +426,7 @@ export const SensorSimulator: React.FC = () => {
                         </span>
                       </div>
                       <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-                        Tare: {formatWeight(coach.empty_weight_kg)} | Gross Max: {formatWeight(coach.max_capacity_kg)}
+                        {isMr ? 'रिकामे वजन' : 'Tare'}: {formatWeight(coach.empty_weight_kg)} | {isMr ? 'कमाल मर्यादा' : 'Max Limit'}: {formatWeight(coach.max_capacity_kg)}
                       </div>
                     </div>
 
@@ -348,13 +434,13 @@ export const SensorSimulator: React.FC = () => {
                     <div className="flex-1 space-y-1">
                       <div className="flex items-center justify-between text-xs">
                         <span className="text-slate-600 dark:text-slate-400 font-medium">
-                          Simulated Bogie Load:
+                          {isMr ? 'डब्यातील प्रत्यक्ष वजन (स्लायडर सरकवा):' : 'Adjust Coach Weight (Slide or Nudge):'}
                         </span>
                         <span className="font-tabular tabular-nums font-bold text-slate-900 dark:text-slate-100">
                           {formatWeight(coach.current_weight_kg)}
                           {!isLoco && (
                             <span className="text-[11px] font-normal text-slate-500 dark:text-slate-400 ml-1.5 font-sans">
-                              (~{occ.estimatedPassengerCount} passengers)
+                              (~{occ.estimatedPassengerCount} {isMr ? 'अंदाजित प्रवासी' : 'passengers (est.)'})
                             </span>
                           )}
                         </span>
@@ -411,10 +497,10 @@ export const SensorSimulator: React.FC = () => {
                         onClick={() => resetSimulatedCoachWeight(coach.id)}
                         disabled={isLoco || coach.current_weight_kg === coach.empty_weight_kg}
                         className="px-2.5 py-1 text-xs font-semibold rounded-sm border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 transition flex items-center gap-1 cursor-pointer"
-                        title="Reset this coach to empty tare weight"
+                        title={isMr ? "हा डबा मूळ रिकाम्या वजनावर परत आणा" : "Reset this coach to empty tare weight"}
                       >
                         <RotateCcw className="w-3 h-3" />
-                        <span>Tare</span>
+                        <span>{isMr ? "डबा रिकामा करा (Tare)" : "Empty Coach (Tare)"}</span>
                       </button>
                     </div>
 

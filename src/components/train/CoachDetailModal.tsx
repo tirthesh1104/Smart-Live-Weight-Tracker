@@ -3,6 +3,7 @@ import { X, Scale, Clock, ShieldAlert, Cpu, Sparkles } from 'lucide-react';
 import { Coach } from '../../types';
 import { calculateCoachOccupancy, formatWeight } from '../../utils/weightCalculations';
 import { AIClientService, PredictionResult } from '../../services/aiClient';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface CoachDetailModalProps {
   coach: Coach | null;
@@ -17,6 +18,8 @@ export const CoachDetailModal: React.FC<CoachDetailModalProps> = ({
   trainName,
   trainNumber
 }) => {
+  const { language } = useLanguage();
+  const isMr = language === 'mr';
   const [prediction, setPrediction] = useState<PredictionResult | null>(null);
   const [loadingAI, setLoadingAI] = useState<boolean>(false);
 
@@ -96,12 +99,45 @@ export const CoachDetailModal: React.FC<CoachDetailModalProps> = ({
             </div>
           )}
 
+          {/* Plain-Language Passenger Action Advice */}
+          <div className={`p-3.5 rounded-xl border flex items-center justify-between gap-3 ${
+            occ.isOverloaded
+              ? 'bg-rose-500/10 border-rose-500/30 text-rose-800 dark:text-rose-200'
+              : occ.clampedOccupancy > 75
+              ? 'bg-amber-500/10 border-amber-500/30 text-amber-800 dark:text-amber-200'
+              : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-800 dark:text-emerald-200'
+          }`}>
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider block opacity-75">
+                {isMr ? '💡 प्रवाशांसाठी सल्ला (What Should I Do?)' : '💡 Recommended Passenger Action'}
+              </span>
+              <p className="text-xs font-semibold mt-0.5">
+                {occ.isOverloaded
+                  ? (isMr ? 'डब्यात मर्यादेपेक्षा जास्त भार आहे! कृपया या डब्यात चढणे टाळा आणि शेजारच्या डब्यात जा.' : 'Coach is over safe load limit! Please do not board this coach; move to a less crowded coach.')
+                  : occ.clampedOccupancy > 75
+                  ? (isMr ? 'डब्यात बरीच गर्दी आहे. सामान जपून चढा किंवा शेजारील डबे तपासा.' : 'Coach is busy with heavy crowd. Board carefully or check adjacent coaches.')
+                  : (isMr ? 'या डब्यात पुरेशी जागा उपलब्ध आहे. तुम्ही आरामात प्रवास करू शकता.' : 'Ample seating/standing room available. Safe and comfortable to board.')}
+              </p>
+            </div>
+            <span className={`px-2.5 py-1 text-xs font-bold rounded-lg shrink-0 ${
+              occ.isOverloaded ? 'bg-rose-600 text-white' : occ.clampedOccupancy > 75 ? 'bg-amber-600 text-white' : 'bg-emerald-600 text-white'
+            }`}>
+              {occ.isOverloaded 
+                ? (isMr ? 'चढू नका' : 'Do Not Board') 
+                : occ.clampedOccupancy > 75 
+                ? (isMr ? 'सावध राहा' : 'Board Carefully') 
+                : (isMr ? 'चढण्यास सुरक्षित' : 'Safe to Board')}
+            </span>
+          </div>
+
           {/* Occupancy Progress Bar */}
           <div>
             <div className="flex justify-between items-center text-xs mb-1.5 font-medium">
-              <span className="text-slate-600 dark:text-slate-400">Payload Occupancy Ratio</span>
+              <span className="text-slate-600 dark:text-slate-400">
+                {isMr ? 'डब्यातील गर्दीची टक्केवारी (Occupancy)' : 'Coach Fullness / Occupancy Ratio'}
+              </span>
               <span className={`text-sm font-bold ${occ.textColorClass}`}>
-                {occ.clampedOccupancy}% {occ.isOverloaded && `(Actual: ${occ.rawOccupancy}%)`}
+                {occ.clampedOccupancy}% {occ.isOverloaded && `(${isMr ? 'प्रत्यक्ष' : 'Actual'}: ${occ.rawOccupancy}%)`}
               </span>
             </div>
             <div className="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
@@ -116,39 +152,59 @@ export const CoachDetailModal: React.FC<CoachDetailModalProps> = ({
               />
             </div>
             <div className="mt-1 flex justify-between text-[10px] text-slate-400">
-              <span>0% Empty (Tare)</span>
-              <span>40% Space Avail</span>
-              <span>75% Moderate</span>
-              <span>100% Full Cap</span>
+              <span>0% {isMr ? 'रिकामा' : 'Empty'}</span>
+              <span>40% {isMr ? 'जागा उपलब्ध' : 'Space Avail'}</span>
+              <span>75% {isMr ? 'मध्यम गर्दी' : 'Moderate'}</span>
+              <span>100% {isMr ? 'पूर्ण भरलेला' : 'Full'}</span>
             </div>
           </div>
 
-          {/* Weight Metrics Grid */}
+          {/* Weight Metrics Grid with Plain Language Explanations */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
-              <span className="text-[11px] text-slate-500 block">Current Gross Wt</span>
-              <span className="text-base font-bold text-slate-900 dark:text-slate-100">
+              <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300 block">
+                {isMr ? 'एकूण वजन' : 'Current Gross Wt'}
+              </span>
+              <span className="text-[10px] text-slate-400 block mb-1">
+                {isMr ? '(डबा + प्रवासी + सामान)' : '(Coach + all passengers)'}
+              </span>
+              <span className="text-base font-bold text-slate-900 dark:text-slate-100 font-mono">
                 {formatWeight(coach.current_weight_kg)}
               </span>
             </div>
 
             <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
-              <span className="text-[11px] text-slate-500 block">Empty Tare Wt</span>
-              <span className="text-base font-semibold text-slate-700 dark:text-slate-300">
+              <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300 block">
+                {isMr ? 'मूळ डब्याचे वजन' : 'Empty Tare Wt'}
+              </span>
+              <span className="text-[10px] text-slate-400 block mb-1">
+                {isMr ? '(प्रवाशांशिवाय मूळ डबा)' : '(Coach without passengers)'}
+              </span>
+              <span className="text-base font-semibold text-slate-700 dark:text-slate-300 font-mono">
                 {formatWeight(coach.empty_weight_kg)}
               </span>
             </div>
 
             <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
-              <span className="text-[11px] text-slate-500 block">Net Passenger Load</span>
-              <span className="text-base font-bold text-blue-600 dark:text-blue-400">
+              <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 block">
+                {isMr ? 'प्रवाशांचे निव्वळ वजन' : 'Net Passenger Load'}
+              </span>
+              <span className="text-[10px] text-slate-400 block mb-1">
+                {isMr ? '(प्रवासी आणि सामानाचे वजन)' : '(Weight of passengers & bags)'}
+              </span>
+              <span className="text-base font-bold text-blue-600 dark:text-blue-400 font-mono">
                 {formatWeight(occ.netPassengerPayloadKg)}
               </span>
             </div>
 
             <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
-              <span className="text-[11px] text-slate-500 block">Max Rated Gross Wt</span>
-              <span className="text-base font-semibold text-slate-700 dark:text-slate-300">
+              <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300 block">
+                {isMr ? 'सुरक्षित कमाल मर्यादा' : 'Max Rated Gross Wt'}
+              </span>
+              <span className="text-[10px] text-slate-400 block mb-1">
+                {isMr ? '(रेल्वेने ठरवलेली सुरक्षित सीमा)' : '(Safe maximum limit)'}
+              </span>
+              <span className="text-base font-semibold text-slate-700 dark:text-slate-300 font-mono">
                 {formatWeight(coach.max_capacity_kg)}
               </span>
             </div>
@@ -206,7 +262,10 @@ export const CoachDetailModal: React.FC<CoachDetailModalProps> = ({
           <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-[11px] text-slate-600 dark:text-slate-400 flex items-start gap-2">
             <Scale className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
             <p>
-              <strong>Scientific Disclaimer:</strong> Occupancy is an estimated weight-based indicator calculated from bogie suspension load cells. It accounts for luggage and passenger mass variance (~78 kg avg) and does not represent an exact optical or turnstile head count.
+              <strong>{isMr ? 'महत्त्वाची नोंद (Note):' : 'Estimated Data Notice:'}</strong>{' '}
+              {isMr 
+                ? 'डब्यातील प्रवाशांची संख्या ही वजनावर आधारित (सरासरी ७८ किलो प्रति व्यक्ती) अंदाजित आहे. हे प्रत्यक्ष मोजणी नसून सुरक्षिततेसाठी तयार केलेला अंदाज आहे.'
+                : 'Coach occupancy is an estimated weight-based metric (~78 kg avg per passenger). It serves as a safety indicator and does not represent an exact turnstile optical head count.'}
             </p>
           </div>
 
@@ -218,7 +277,7 @@ export const CoachDetailModal: React.FC<CoachDetailModalProps> = ({
             onClick={onClose}
             className="px-4 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition"
           >
-            Close Details
+            {isMr ? 'माहिती बंद करा (Close)' : 'Close Coach Details'}
           </button>
         </div>
 
